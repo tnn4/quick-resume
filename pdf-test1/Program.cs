@@ -11,7 +11,7 @@ public class EntryPoint
 {
     static void Main()
     {
-
+        DocTest.create_resume_test1();
     }
 }
 
@@ -24,6 +24,16 @@ public class TestFn
 
 public class DocTest
 {
+    
+    public static void create_resume_test1()
+    {
+        var filePath = "resume.test1.pdf";
+        var model = Resume_data_source.generateExampleResume();
+        var resume_doc = new ResumeDoc(model);
+        resume_doc.GeneratePdf(filePath);
+        resume_doc.ShowInPreviewer();
+    }
+    
     public static void create_invoice_doc()
     {
         var filePath = "invoice.pdf";

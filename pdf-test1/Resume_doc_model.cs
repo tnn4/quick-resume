@@ -18,13 +18,13 @@ internal class Resume_doc_model
 public class ResumeModel
 {
     public ContactInformation Contact_Info { get; set; }
-    public Education _Education { get; set;}
+    public List<Education> _Education { get; set;}
 
-    public  Experiences _Experiences { get; set; }
+    public  List<Experience> _Experiences { get; set; }
 
-    public Skills _Skills { get; set; }
+    public List<Skill> _Skills { get; set; }
 
-    public Projects _Projects { get; set; }
+    public List<Project> _Projects { get; set; }
 
 }
 
@@ -38,13 +38,8 @@ public class ContactInformation
     public Uri Github { get; set; }
 }
 
+
 public class Education
-{
-    public List<School> Schools { get; set; }
-
-}
-
-public class School
 {
     public string Name { get; set; }
     public string Degree { get; set; }
@@ -53,20 +48,27 @@ public class School
 
 public class Experiences
 {
-    public List<Experience> Experience { get; set; }
+    public List<Experience> _Experiences { get; set; }
 }
 
 public class Experience
 {
     public string Company { get; set; }
     public string Role { get; set; }
-    public DateTime Date { get; set; }
+    public DateTime StartDate { get; set; }
+    public DateTime EndDate { get; set; }
     public List<string> Jobs { get; set; }
 }
 
 public class Skills
 {
-    public Dictionary<string,string> SubSkills;
+    public Dictionary<string,string> SubSkills { get; set; }
+}
+
+public class Skill
+{
+    public string SkillGroup { get; set; }
+    public string SubSkill { get; set; }
 }
 
 public class Projects

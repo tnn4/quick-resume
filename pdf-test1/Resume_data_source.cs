@@ -37,74 +37,76 @@ internal class Resume_data_source
         return new ContactInformation
         {
             Name = name,
-            Email = Placeholders.Email(),
+            Email = "SteveJobsfinder@crapple.com",
             PhoneNumber = Placeholders.PhoneNumber(),
             Linkedin = new Uri("https://www.linkedin.com/in/" + name),
             Github = new Uri("https://www.github.com/" + name)
         };
     }
 
-    public static Education GenerateRandomEducation()
+    public static List<Education> GenerateRandomEducation()
     {
-        var schools = new List<School>();
+        var schools = new List<Education>();
 
-        schools.Add(new School
+        schools.Add(new Education
         {
             Name = "NoWhere College",
             Degree = "B.S. Crapology",
             GraduationDate = new DateTime(1980, 12, 1)
         }) ;
 
-        return new Education
-        {
-            Schools = schools
-        };
+        return schools;
     }
 
-    public static Experiences GenerateRandomExperiences()
+    public static List<Experience> GenerateRandomExperiences()
     {
         var experiences = new List<Experience>();
         var responsbilities = new List<string>();
-        
+        experiences.Add(new Experience
+        {
+            Company = "Crapple",
+            Role = "Founder/CEO",
+            StartDate = new DateTime(1976, 4, 1),
+            EndDate = new DateTime(1985, 9, 16),
+            Jobs = GenerateRandomJobs()
+        });
         experiences.Add(new Experience
         {
             Company = "Flixar",
             Role = "CEO",
-            Date = new DateTime(1986, 2, 3),
+            StartDate = new DateTime(1986, 2, 3),
+            EndDate = new DateTime(1987,1,2),
             Jobs = GenerateRandomJobs(),
             
         });
 
 
-        return new Experiences
-        {
-            Experience = experiences
-        };
+        return experiences;
     }
 
     public static List<string> GenerateRandomJobs()
     {
         var jobs = new List<string>();
-        jobs.Add("1st job");
+        jobs.Add("after getting kicked out of Crapple, founded a company that made janky 3d animations");
         jobs.Add("2nd job");
         return jobs;
 
     }
 
-    public static Skills GenerateRandomSkills()
+    public static List<Skill> GenerateRandomSkills()
     {
-        var skills = new Dictionary<string, string>();
-        skills.Add("Languages", "English, Spanish, German, Russian, Japanese");
-        skills.Add("Random", "calligraphy");
-
-
-        return new Skills
+        var skills = new List<Skill>();
+        skills.Add(new Skill
         {
-            SubSkills = skills
-        };
+            SkillGroup = "Languages",
+            SubSkill = "English, German, French"
+        });
+
+
+        return skills;
     }
 
-    public static Projects GenerateRandomProjects()
+    public static List<Project> GenerateRandomProjects()
     {
         var projects = new List<Project>();
         projects.Add(new Project
@@ -118,9 +120,6 @@ internal class Resume_data_source
             Description = "i built a cool 2nd project"
         });
 
-        return new Projects
-        {
-            _Projects = projects
-        };
+        return projects;
     }
 }
