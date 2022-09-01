@@ -14,10 +14,16 @@ namespace pdf_test1;
 internal class Resume_doc_model
 {
 }
+// CONSTANTS
+public static class Constants
+{
+    public const string LONG_SPACE = "                                                      ";
+}
 
+// DOCUMENT MODEL
 public class ResumeModel
 {
-    public ContactInformation Contact_Info { get; set; }
+    public ContactInformation Contact { get; set; }
     public List<Education> _Education { get; set;}
 
     public  List<Experience> _Experiences { get; set; }
@@ -27,7 +33,7 @@ public class ResumeModel
     public List<Project> _Projects { get; set; }
 
 }
-
+// CONTACT
 public class ContactInformation
 {
     public string Name { get; set; }
@@ -38,7 +44,7 @@ public class ContactInformation
     public Uri Github { get; set; }
 }
 
-
+// EDUCATION
 public class Education
 {
     public string Name { get; set; }
@@ -46,36 +52,25 @@ public class Education
     public DateTime GraduationDate { get; set; }
 }
 
-public class Experiences
-{
-    public List<Experience> _Experiences { get; set; }
-}
-
+// EXPERIENCE
 public class Experience
 {
     public string Company { get; set; }
     public string Role { get; set; }
     public DateTime StartDate { get; set; }
     public DateTime EndDate { get; set; }
-    public List<string> Jobs { get; set; }
+    public List<string> Tasks { get; set; }
 }
 
-public class Skills
-{
-    public Dictionary<string,string> SubSkills { get; set; }
-}
 
+// SKILL
 public class Skill
 {
     public string SkillGroup { get; set; }
     public string SubSkill { get; set; }
 }
 
-public class Projects
-{
-    public List<Project> _Projects;
-}
-
+// PROJECT
 public class Project
 {
     public string ProjectName { get; set; }

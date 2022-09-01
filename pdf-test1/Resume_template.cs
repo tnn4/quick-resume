@@ -12,6 +12,7 @@ using System.ComponentModel;
 using IContainer = QuestPDF.Infrastructure.IContainer;
 using System.Xml.Linq;
 using System.Data.Common;
+using System.Reflection;
 
 namespace pdf_test1;
 
@@ -38,7 +39,7 @@ public partial class ResumeDoc : IDocument
 
 public partial class ResumeDoc : IDocument
 {
-    public  string LONG_SPACE = "                                                    ";
+    
 
     public void compose_resume_example(IDocumentContainer container)
     {
@@ -48,17 +49,23 @@ public partial class ResumeDoc : IDocument
                 page.Margin(20);
                 page.Header().Element(compose_contact);
                 page.Content().Element(compose_content);
-
+                
             });
     }
     
     public void compose_content(IContainer container)
     {
-        compose_experience(container);
-        compose_education(container);
-        compose_skills(container);
-        compose_projects(container);
-
+        container.Column(column =>
+        {
+            column.Item().Row(row =>
+            {
+                row.RelativeItem().Component(new Component_Contact("name", "email", "phone"));
+            });
+            column.Item().Row(row =>
+            {
+                row.RelativeItem().Component(new Component_Contact("name2", "email2", "phone2"));
+            });
+        });
     }
     // Create Contact info template
     public void compose_contact(IContainer container)
@@ -69,11 +76,18 @@ public partial class ResumeDoc : IDocument
             row.RelativeItem().Column(column =>
             {
                 // Contact Info
-                column.Item().Text($"{Model.Contact_Info.Name}").Style(titleStyle);
-                column.Item().Text($"{Model.Contact_Info.Email}");
-                column.Item().Hyperlink($"{Model.Contact_Info.Linkedin}");
-                column.Item().Text($"{Model.Contact_Info.PhoneNumber}");
-                column.Item().Text($"{Model.Contact_Info.Github}");
+                // Name
+                column.Item().Text($"{Model.Contact.Name}").Style(titleStyle);
+                // Email
+                column.Item().Text($"{Model.Contact.Email}");
+                // Linkedin
+                if (Model.Contact.Linkedin is not null)
+                    column.Item().Hyperlink($"{Model.Contact.Linkedin}");
+                // Phone
+                column.Item().Text($"{Model.Contact.PhoneNumber}");
+                // Github
+                if (Model.Contact.Github is not null)
+                    column.Item().Text($"{Model.Contact.Github}");
                 // Horizontal Line
                 column.Item().PaddingVertical(5).LineHorizontal(1).LineColor(Colors.Black);
             });
@@ -87,6 +101,10 @@ public partial class ResumeDoc : IDocument
         {
             row.RelativeItem().Column(column =>
             {
+                var boldStyle = TextStyle.Default.FontSize(14).SemiBold().FontColor(Colors.Black);
+
+                column.Item().Text("EDUCATION").Style(boldStyle);
+
                 foreach (Education edu in Model._Education)
                 {
                     container.Column(column =>
@@ -122,12 +140,11 @@ public partial class ResumeDoc : IDocument
                 
                 foreach (Experience exp in Model._Experiences)
                 {
-                    column.Item().Text($"{exp.Company}" + LONG_SPACE + exp.StartDate.ToString("MMM yyyy") + "-" + exp.EndDate.ToString("MMM yyyy"));
-
+                    column.Item().Text($"{exp.Company}" + Constants.LONG_SPACE + exp.StartDate.ToString("MMM yyyy") + "-" + exp.EndDate.ToString("MMM yyyy"));
                     column.Item().Text($"{exp.Role}");
-                    foreach (string job in exp.Jobs)
+                    foreach (string task in exp.Tasks)
                     {
-                        column.Item().ScaleToFit().Text($"> {job}");
+                        column.Item().ScaleToFit().Text($"> {task}");
                     }
                     
                     

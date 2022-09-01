@@ -18,7 +18,7 @@ internal class Resume_data_source
     {
         return new ResumeModel
         {
-            Contact_Info = GenerateRandomContact(),
+            Contact = GenerateRandomContact(),
 
             _Education = GenerateRandomEducation(),
 
