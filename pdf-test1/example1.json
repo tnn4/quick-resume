@@ -8,7 +8,9 @@
         "github": "https://github.com/stevejobsfinder"
     },
     "education":
-    [
+    {
+        "section": "education",
+        "degrees": [        
         {
             "name": "Northsouthern University",
             "degree": "B.S. Crapology",
@@ -18,52 +20,21 @@
             "name": "Nowhere College",
             "degree": "M.S. Crapology",
             "graduation_date": "May 1982"
-        }
+        }]
+    },
 
-    ]
-,
     "experience":
-    [
+    {
+        "section" : "experience",
+      "jobs": [
         {
-            "company": "company",
-            "role": "role",
-            "start_date": "start",
-            "end_date": "end",
-            "tasks": ["task 1", "task 2", "task 3"]
-        },
-        {
-            "company": "company2",
-            "role": "role2",
-            "start_date": "start2",
-            "end_date": "end2",
-            "tasks": ["task 1.2", "task 2.2", "task 3.2"]
+          "company": "company",
+          "role": "role",
+          "start_date": "start",
+          "end_date": "end",
+          "tasks": [ "task 1", "task 2", "task 3" ]
         }
-    ]
-,
-    "skills":
-    [
-        {
-            "skillgroup": "languages",
-            "subskills": ["English", "French", "Spanish", "Chinese(Simplified)", "Japanese"]
-        },
-        {
-            "skillgroup": "programming languages",
-            "subskills": ["Python", "Javascript", "C/C++", "C#", "Java"]
-        }
-
-    ],
-    "projects":
-    [
-        {
-            "project_name": "Crapple cryPhone",
-            "project_description": "Designed a smartphone so bad that it made people cry, but they still bought it for unreasonable amounts of money"
-    
-        },
-        {
-            "project_name": "Crapple cryPad",
-            "project_description": "Designed a tablet that made wallets bleed and brought people to tears"
-    
-        }
-    ]
+      ]
+    }
 
 }

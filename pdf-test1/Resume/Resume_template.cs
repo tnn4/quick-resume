@@ -13,6 +13,7 @@ using IContainer = QuestPDF.Infrastructure.IContainer;
 using System.Xml.Linq;
 using System.Data.Common;
 using System.Reflection;
+using pdf_test1.Resume;
 
 namespace pdf_test1;
 
@@ -105,7 +106,7 @@ public partial class ResumeDoc : IDocument
 
                 column.Item().Text("EDUCATION").Style(boldStyle);
 
-                foreach (Education edu in Model._Education)
+                foreach (School edu in Model._Education)
                 {
                     container.Column(column =>
                     {
@@ -138,7 +139,7 @@ public partial class ResumeDoc : IDocument
                 column.Item().Text("EXPERIENCE").Style(boldStyle);
 
                 
-                foreach (Experience exp in Model._Experiences)
+                foreach (Job exp in Model._Experiences)
                 {
                     column.Item().Text($"{exp.Company}" + Constants.LONG_SPACE + exp.StartDate.ToString("MMM yyyy") + "-" + exp.EndDate.ToString("MMM yyyy"));
                     column.Item().Text($"{exp.Role}");

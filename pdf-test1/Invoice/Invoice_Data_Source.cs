@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 using QuestPDF.Helpers;
 
-namespace pdf_test1;
+namespace pdf_test1.Invoice;
 
 internal class Invoice_Data_Source
 {
@@ -46,7 +46,7 @@ public static class InvoiceDocumentDataSource
             Quantity = Random.Next(1, 10)
         };
     }
-    
+
     private static Address GenerateRandomAddress()
     {
         return new Address

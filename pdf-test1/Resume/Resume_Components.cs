@@ -9,8 +9,9 @@ using QuestPDF.Elements;
 using QuestPDF.Helpers;
 using QuestPDF.Fluent;
 using System.Reflection;
+using System.Numerics;
 
-namespace pdf_test1;
+namespace pdf_test1.Resume;
 
 internal class Resume_Components
 {
@@ -31,7 +32,7 @@ public class Component_Contact : IComponent
         Name = name; Email = email; Phone = phone;
     }
 
-    public Component_Contact(string name, string email, string phone, string linkedin, string github )
+    public Component_Contact(string name, string email, string phone, string linkedin, string github)
     {
         Name = name; Email = email; Phone = phone;
         Linkedin = new Uri(linkedin);
@@ -66,23 +67,56 @@ public class Component_Contact : IComponent
 }
 #endregion
 
+#region Education
+
+public class Component_Education : IComponent
+{
+    public string Name { get; set; }
+    public string Degree { get; set; }
+    public DateTime GraduationDate { get; set; }
+
+    public Component_Education()
+    {
+
+    }
+
+    public void Compose(IContainer container)
+    {
+        var titleStyle = TextStyle.Default.FontSize(16).SemiBold().FontColor(Colors.Black);
+        container.Row(row =>
+        {
+            row.RelativeItem().Column(column =>
+            {
+                column.Item().Text($"{Name}");
+                column.Item().Text($"{Degree}");
+                column.Item().Text($"{GraduationDate}");
+                // Horizontal Line
+                column.Item().PaddingVertical(5).LineHorizontal(1).LineColor(Colors.Black);
+            });
+        });
+    }
+
+}
+
+#endregion
+
 #region Experience
 
 public class Component_Experience : IComponent
 {
-    public List<Experience> Experiences { get; set; }
+    public List<Job> Experiences { get; set; }
 
     public Component_Experience()
     {
-        Experiences = new List<Experience>();
-        Experiences.Add(new Experience
+        Experiences = new List<Job>();
+        Experiences.Add(new Job
         {
             Company = "",
             Role = "",
             StartDate = new DateTime(0, 0, 0),
-            EndDate = new DateTime(1,1,1),
+            EndDate = new DateTime(1, 1, 1),
             Tasks = new List<string>()
-        }) ;
+        });
     }
 
 
@@ -97,11 +131,12 @@ public class Component_Experience : IComponent
                 column.Item().Text("EXPERIENCE").Style(boldStyle);
 
 
-                foreach (Experience exp in Experiences)
+                foreach (Job job in Experiences)
                 {
-                    column.Item().Text($"{exp.Company}" + Constants.LONG_SPACE + exp.StartDate.ToString("MMM yyyy") + "-" + exp.EndDate.ToString("MMM yyyy"));
-                    column.Item().Text($"{exp.Role}");
-                    foreach (string task in exp.Tasks)
+                    column.Item()
+                    .Text($"{job.Company}" + Constants.LONG_SPACE + job.StartDate.ToString("MMM yyyy") + "-" + job.EndDate.ToString("MMM yyyy"));
+                    column.Item().Text($"{job.Role}");
+                    foreach (string task in job.Tasks)
                     {
                         column.Item().ScaleToFit().Text($"> {task}");
                     }
@@ -110,9 +145,42 @@ public class Component_Experience : IComponent
                 // Horizontal Line
                 column.Item().PaddingVertical(5).LineHorizontal(1).LineColor(Colors.Black);
             });
-            
+
         });
     }
 }
+
+#endregion
+
+#region Skills
+public class Component_Skill : IComponent
+{
+    public string SkillGroup { get; set; }
+    public string SkillSub { get; set; }
+    public Component_Skill()
+    {
+
+    }
+
+    public void Compose(IContainer container)
+    {
+        var titleStyle = TextStyle.Default.FontSize(16).SemiBold().FontColor(Colors.Black);
+        container.Row(row =>
+        {
+            row.RelativeItem().Column(column =>
+            {
+                column.Item().Text($"{SkillGroup}");
+                column.Item().Text($"{SkillSub}");
+
+                // Horizontal Line
+                column.Item().PaddingVertical(5).LineHorizontal(1).LineColor(Colors.Black);
+            });
+        });
+    }
+
+}
+#endregion
+
+#region Projects
 
 #endregion

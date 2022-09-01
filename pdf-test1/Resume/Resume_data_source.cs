@@ -10,7 +10,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Security.Cryptography.X509Certificates;
 
-namespace pdf_test1;
+namespace pdf_test1.Resume;
 
 internal class Resume_data_source
 {
@@ -22,7 +22,7 @@ internal class Resume_data_source
 
             _Education = GenerateRandomEducation(),
 
-            _Experiences = GenerateRandomExperiences(), 
+            _Experiences = GenerateRandomJobs(),
 
             _Skills = GenerateRandomSkills(),
 
@@ -44,47 +44,47 @@ internal class Resume_data_source
         };
     }
 
-    public static List<Education> GenerateRandomEducation()
+    public static List<School> GenerateRandomEducation()
     {
-        var schools = new List<Education>();
+        var schools = new List<School>();
 
-        schools.Add(new Education
+        schools.Add(new School
         {
             Name = "NoWhere College",
             Degree = "B.S. Crapology",
             GraduationDate = new DateTime(1980, 12, 1)
-        }) ;
+        });
 
         return schools;
     }
 
-    public static List<Experience> GenerateRandomExperiences()
+    public static List<Job> GenerateRandomJobs()
     {
-        var experiences = new List<Experience>();
+        var Jobs = new List<Job>();
         var responsbilities = new List<string>();
-        experiences.Add(new Experience
+        Jobs.Add(new Job
         {
             Company = "Crapple",
             Role = "Founder/CEO",
             StartDate = new DateTime(1976, 4, 1),
             EndDate = new DateTime(1985, 9, 16),
-            Jobs = GenerateRandomJobs()
+            Tasks = GenerateRandomTasks()
         });
-        experiences.Add(new Experience
+        Jobs.Add(new Job
         {
             Company = "Flixar",
             Role = "CEO",
             StartDate = new DateTime(1986, 2, 3),
-            EndDate = new DateTime(1987,1,2),
-            Jobs = GenerateRandomJobs(),
-            
+            EndDate = new DateTime(1987, 1, 2),
+            Tasks = GenerateRandomTasks(),
+
         });
 
 
-        return experiences;
+        return Jobs;
     }
 
-    public static List<string> GenerateRandomJobs()
+    public static List<string> GenerateRandomTasks()
     {
         var jobs = new List<string>();
         jobs.Add("after getting kicked out of Crapple, founded a company that made janky 3d animations");
