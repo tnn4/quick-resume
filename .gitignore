@@ -1,0 +1,4 @@
+# ignore all directories called bin anywhere below the current level in a directory tree 
+bin/
+obj/
+.vs/
