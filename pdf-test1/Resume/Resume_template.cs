@@ -43,18 +43,22 @@ public partial class ResumeDoc : IDocument
             {
                 page.Margin(20);
                 // page.Header().Element(compose_contact);
-                page.Content().Element(compose_content);
+                page.Content().Element(compose_example);
                 
             });
     }
     
     public void compose_content(IContainer container)
     {
+    }
+
+    public void compose_example(IContainer container)
+    {
         container.Column(column =>
         {
             // CONTACT
             ContactColumn(column);
-            
+
             // EDUCATION
 
             EducationColumn(column);
@@ -194,6 +198,8 @@ public partial class ResumeDoc : IDocument
     }
     #endregion
 
+
+    #region obsolete
     public void compose_section(IContainer container, string section_name, IComponent component)
     {
         container.Column(column =>
@@ -348,3 +354,4 @@ public partial class ResumeDoc : IDocument
         );
     }
 }
+#endregion
