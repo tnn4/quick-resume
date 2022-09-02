@@ -74,18 +74,34 @@ public partial class ResumeDoc : IDocument
                     {
                         Name = "Northsouthern University",
                         Degree = "B.S. Marketing",
-                        GraduationDate = new DateTime(2000,5,30)
+                        GraduationDate = "May 1990"
                     },
                     new School
                     {
                         Name = "Southnorthern University",
                         Degree = "M.S. Finance",
-                        GraduationDate = new DateTime(2002,5,30)
+                        GraduationDate = "May 1992"
                     }
                 }));
             });
         });
     }
+
+    public void compose_section(IContainer container)
+    {
+        container.Column(column =>
+        {
+            column.Item().Row( row =>
+            {
+                row.RelativeItem().Component(new Component_Empty());
+            });
+            column.Item().Row(row =>
+            {
+                row.RelativeItem().Component(new Component_Empty());
+            });
+        });
+    }
+
     // Create Contact info template
     public void compose_contact(IContainer container)
     {
@@ -159,7 +175,8 @@ public partial class ResumeDoc : IDocument
                 
                 foreach (Job exp in Model._Experiences)
                 {
-                    column.Item().Text($"{exp.Company}" + Constants.LONG_SPACE + exp.StartDate.ToString("MMM yyyy") + "-" + exp.EndDate.ToString("MMM yyyy"));
+                    // column.Item().Text($"{exp.Company}" + Constants.LONG_SPACE + exp.StartDate.ToString("MMM yyyy") + "-" + exp.EndDate.ToString("MMM yyyy"));
+                    column.Item().Text($"{exp.Company} {exp.StartDate}-{exp.EndDate}");
                     column.Item().Text($"{exp.Role}");
                     foreach (string task in exp.Tasks)
                     {

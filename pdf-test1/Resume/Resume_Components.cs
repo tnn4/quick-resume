@@ -131,8 +131,8 @@ public class Component_Experience : IComponent
         {
             Company = "",
             Role = "",
-            StartDate = new DateTime(0, 0, 0),
-            EndDate = new DateTime(1, 1, 1),
+            StartDate = "",
+            EndDate = "",
             Tasks = new List<string>()
         });
     }
@@ -152,7 +152,8 @@ public class Component_Experience : IComponent
                 foreach (Job job in Experiences)
                 {
                     column.Item()
-                    .Text($"{job.Company}" + Constants.LONG_SPACE + job.StartDate.ToString("MMM yyyy") + "-" + job.EndDate.ToString("MMM yyyy"));
+                    //.Text($"{job.Company}" + Constants.LONG_SPACE + job.StartDate.ToString("MMM yyyy") + "-" + job.EndDate.ToString("MMM yyyy"));
+                    .Text($"{job.Company} {job.StartDate} - {job.EndDate}");
                     column.Item().Text($"{job.Role}");
                     foreach (string task in job.Tasks)
                     {
@@ -228,3 +229,11 @@ public class Component_Projects : IComponent
 
 }
 #endregion
+
+public class Component_Empty : IComponent
+{
+    public void Compose(IContainer container)
+    {
+
+    }
+}

@@ -52,7 +52,8 @@ internal class Resume_data_source
         {
             Name = "NoWhere College",
             Degree = "B.S. Crapology",
-            GraduationDate = new DateTime(1980, 12, 1)
+            // GraduationDate = new DateTime(1980, 12, 1)
+            GraduationDate = "May 1980"
         });
 
         return schools;
@@ -66,16 +67,20 @@ internal class Resume_data_source
         {
             Company = "Crapple",
             Role = "Founder/CEO",
-            StartDate = new DateTime(1976, 4, 1),
-            EndDate = new DateTime(1985, 9, 16),
+            // StartDate = new DateTime(1976, 4, 1),
+            // EndDate = new DateTime(1985, 9, 16),
+            StartDate = "Apr 1976",
+            EndDate = "Sep 1985",
             Tasks = GenerateRandomTasks()
         });
         Jobs.Add(new Job
         {
             Company = "Flixar",
             Role = "CEO",
-            StartDate = new DateTime(1986, 2, 3),
-            EndDate = new DateTime(1987, 1, 2),
+            // StartDate = new DateTime(1986, 2, 3),
+            // EndDate = new DateTime(1987, 1, 2),
+            StartDate = "Feb 1986",
+            EndDate = "Jan 1987",
             Tasks = GenerateRandomTasks(),
 
         });

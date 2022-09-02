@@ -76,8 +76,8 @@ public class JsonTest
         {
             Company = "company",
             Role = "Role",
-            StartDate = new DateTime(2000, 12, 30),
-            EndDate = new DateTime(2001, 1, 1),
+            StartDate = "Dec 2000",
+            EndDate = "Jan 2001",
             Tasks = new List<string>
                 {
                     "task1",
@@ -101,8 +101,10 @@ public class JsonTest
                 {
                     Company = "company",
                     Role = "role",
-                    StartDate = new DateTime(2000, 12, 30),
-                    EndDate = new DateTime(2001, 1, 1),
+                    // StartDate = new DateTime(2000, 12, 30),
+                    // EndDate = new DateTime(2001, 1, 1),
+                    StartDate = "Dec 2000",
+                    EndDate = "Jan 2001",
                     Tasks = new List<string>
                     {
                         "task1",
@@ -114,8 +116,10 @@ public class JsonTest
                 {
                     Company = "company2",
                     Role = "role2",
-                    StartDate = new DateTime(2001, 12, 30),
-                    EndDate = new DateTime(2002, 1, 1),
+                    // StartDate = new DateTime(2001, 12, 30),
+                    // EndDate = new DateTime(2002, 1, 1),
+                    StartDate = "Dec 2000",
+                    EndDate = "Jan 2001",
                     Tasks = new List<string>
                     {
                         "task1.2",
