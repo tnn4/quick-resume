@@ -58,6 +58,8 @@ public partial class ResumeDoc : IDocument
     {
         container.Column(column =>
         {
+            // EDUCATION
+            /*
             column.Item().Row(row =>
             {
                 row.RelativeItem().Component(new Component_Section
@@ -65,7 +67,7 @@ public partial class ResumeDoc : IDocument
                     Section = "EDUCATION"
                 });
             });
-            
+            */
             column.Item().Row(row =>
             {
                 row.RelativeItem().Component(new Component_Education(new List<School>
@@ -81,6 +83,37 @@ public partial class ResumeDoc : IDocument
                         Name = "Southnorthern University",
                         Degree = "M.S. Finance",
                         GraduationDate = "May 1992"
+                    }
+                }));
+            });
+            
+            // EXPERIENCE
+
+            column.Item().Row(row =>
+            {
+                row.RelativeItem().Component(new Component_Experience(new List<Job>
+                {
+                    new Job
+                    {
+                        Company = "company",
+                        Role = "role",
+                        StartDate = "May 1000",
+                        EndDate = "May 2000",
+                        Tasks = new List<string>
+                        {
+                            "task 1", "task 2", "task 3"
+                        }
+                    },
+                    new Job
+                    {
+                        Company = "company",
+                        Role = "role",
+                        StartDate = "May 1000",
+                        EndDate = "May 2000",
+                        Tasks = new List<string>
+                        {
+                            "task 1", "task 2", "task 3"
+                        }
                     }
                 }));
             });

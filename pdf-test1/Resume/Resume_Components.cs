@@ -96,20 +96,25 @@ public class Component_Education : IComponent
 
     public void Compose(IContainer container)
     {
-        var titleStyle = TextStyle.Default.FontSize(16).SemiBold().FontColor(Colors.Black);
+        var titleStyle = TextStyle.Default.FontSize(12).SemiBold().FontColor(Colors.Black);
         container.Row(row =>
         {
-            foreach (School edu in Education)
-            {
+                // foreach
                 row.RelativeItem().Column(column =>
                 {
-                    column.Item().Text($"{edu.Name}");
-                    column.Item().Text($"{edu.Degree}");
-                    column.Item().Text($"{edu.GraduationDate}");
+                    column.Item().Text("EDUCATION").Style(titleStyle);
+
+                    foreach (School edu in Education)
+                    {
+                        column.Item().Text($"{edu.Name}");
+                        column.Item().Text($"{edu.Degree}");
+                        column.Item().Text($"{edu.GraduationDate}");
+                    }
+
                     // Horizontal Line
                     column.Item().PaddingVertical(5).LineHorizontal(1).LineColor(Colors.Black);
                 });
-            }
+
 
         });
 
@@ -137,14 +142,17 @@ public class Component_Experience : IComponent
         });
     }
 
-
+    public Component_Experience(List<Job> experiences)
+    {
+        Experiences = experiences;
+    }
     public void Compose(IContainer container)
     {
         container.Row(row =>
         {
             row.RelativeItem().Column(column =>
             {
-                var boldStyle = TextStyle.Default.FontSize(14).SemiBold().FontColor(Colors.Black);
+                var boldStyle = TextStyle.Default.FontSize(12).SemiBold().FontColor(Colors.Black);
 
                 column.Item().Text("EXPERIENCE").Style(boldStyle);
 
@@ -154,7 +162,7 @@ public class Component_Experience : IComponent
                     column.Item()
                     //.Text($"{job.Company}" + Constants.LONG_SPACE + job.StartDate.ToString("MMM yyyy") + "-" + job.EndDate.ToString("MMM yyyy"));
                     .Text($"{job.Company} {job.StartDate} - {job.EndDate}");
-                    column.Item().Text($"{job.Role}");
+                    column.Item().Text($"{job.Role}").Italic();
                     foreach (string task in job.Tasks)
                     {
                         column.Item().ScaleToFit().Text($"> {task}");
