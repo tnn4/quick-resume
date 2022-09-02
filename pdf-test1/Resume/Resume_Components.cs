@@ -139,11 +139,12 @@ public class Component_Experience : IComponent
     }
     public void Compose(IContainer container)
     {
+        var boldStyle = TextStyle.Default.FontSize(12).SemiBold().FontColor(Colors.Black);
         container.Row(row =>
         {
             row.RelativeItem().Column(column =>
             {
-                var boldStyle = TextStyle.Default.FontSize(12).SemiBold().FontColor(Colors.Black);
+                
 
                 column.Item().Text("EXPERIENCE").Style(boldStyle);
 
@@ -182,14 +183,21 @@ public class Component_Skill : IComponent
 
     public void Compose(IContainer container)
     {
-        var titleStyle = TextStyle.Default.FontSize(16).SemiBold().FontColor(Colors.Black);
+        var boldStyle = TextStyle.Default.FontSize(12).SemiBold().FontColor(Colors.Black);
         container.Row(row =>
         {
+            
             row.RelativeItem().Column(column =>
             {
+                column.Item().Text("SKILLS AND INTERESTS").Style(boldStyle);
                 foreach (KeyValuePair<string,string> kvp in Skills)
                 {
-                    column.Item().Text($"{kvp.Key}: {kvp.Value}");
+                    // column.Item().Text($"{kvp.Key}: {kvp.Value}");
+                    column.Item().Text(text =>
+                    {
+                        text.Span($"{kvp.Key}:").Bold();
+                        text.Span($"{kvp.Value}");
+                    });
                 }
 
                 // Horizontal Line
@@ -213,13 +221,15 @@ public class Component_Projects : IComponent
     public void Compose(IContainer container)
     {
         var titleStyle = TextStyle.Default.FontSize(16).SemiBold().FontColor(Colors.Black);
+
         container.Row(row =>
         {
             row.RelativeItem().Column(column =>
             {
                 foreach (KeyValuePair<string, string> kvp in Projects)
                 {
-                    column.Item().Text($"{kvp.Key}: {kvp.Value}");
+                    column.Item().Text($"{kvp.Key}").Bold();
+                    column.Item().Text($"{kvp.Value}");
                 }
 
                 // Horizontal Line

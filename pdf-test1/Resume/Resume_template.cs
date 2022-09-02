@@ -88,7 +88,7 @@ public partial class ResumeDoc : IDocument
             });
 
             // SKills
-
+            SkillsColumn(column);
             // Projects
         });
     }
@@ -151,7 +151,15 @@ public partial class ResumeDoc : IDocument
 
     public void SkillsColumn(ColumnDescriptor column)
     {
-
+        column.Item().Row(row =>
+        {
+            row.RelativeItem().Component(new Component_Skill(new Dictionary<string, string>
+            {
+                { "skill type 1", "skill1 , skill2 , skill3" },
+                { "skill type 2", "skill2.1, skill2.2, skill 2.3" },
+                { "skill type 3", "skill3.1, skill3.2, skill 3.3" },
+            }));
+        });
     }
 
     public void ProjectsColumn(ColumnDescriptor column)
