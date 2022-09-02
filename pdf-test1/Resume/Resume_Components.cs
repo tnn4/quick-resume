@@ -1,17 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-using QuestPDF.Infrastructure;
+﻿using QuestPDF.Infrastructure;
 using QuestPDF.Elements;
 using QuestPDF.Helpers;
 using QuestPDF.Fluent;
-using System.Reflection;
-using System.Numerics;
-using System.Xml.Linq;
-using System.Data.Common;
 
 namespace pdf_test1.Resume;
 
@@ -39,14 +29,15 @@ public class Component_Contact : IComponent
 {
     public string Name { get; set; }
     public string Email { get; set; }
-
     public string Phone { get; set; }
     public Uri? Linkedin { get; set; }
     public Uri? Github { get; set; }
 
     public Component_Contact(string name, string email, string phone)
     {
-        Name = name; Email = email; Phone = phone;
+        Name = name;
+        Email = email;
+        Phone = phone;
     }
 
     public Component_Contact(string name, string email, string phone, string linkedin, string github)
@@ -182,11 +173,11 @@ public class Component_Experience : IComponent
 #region Skills
 public class Component_Skill : IComponent
 {
-    public string SkillGroup { get; set; }
-    public string SkillSub { get; set; }
-    public Component_Skill()
+    public Dictionary<String, String> Skills { get; set; }
+    
+    public Component_Skill(Dictionary<String, String> skills)
     {
-
+        Skills = skills;
     }
 
     public void Compose(IContainer container)
@@ -196,8 +187,10 @@ public class Component_Skill : IComponent
         {
             row.RelativeItem().Column(column =>
             {
-                column.Item().Text($"{SkillGroup}");
-                column.Item().Text($"{SkillSub}");
+                foreach (KeyValuePair<string,string> kvp in Skills)
+                {
+                    column.Item().Text($"{kvp.Key}: {kvp.Value}");
+                }
 
                 // Horizontal Line
                 column.Item().PaddingVertical(5).LineHorizontal(1).LineColor(Colors.Black);
@@ -211,12 +204,10 @@ public class Component_Skill : IComponent
 #region Projects
 public class Component_Projects : IComponent
 {
-    public string ProjectName { get; set; }
-    public string Description { get; set; }
-    public Component_Projects(string name, string description)
+    public Dictionary<string,string> Projects { get; set; }
+    public Component_Projects(Dictionary<String, String> projects)
     {
-        ProjectName = name;
-        Description = description;
+        Projects = projects;
     }
 
     public void Compose(IContainer container)
@@ -226,8 +217,10 @@ public class Component_Projects : IComponent
         {
             row.RelativeItem().Column(column =>
             {
-                column.Item().Text($"{ProjectName}");
-                column.Item().Text($"{Description}");
+                foreach (KeyValuePair<string, string> kvp in Projects)
+                {
+                    column.Item().Text($"{kvp.Key}: {kvp.Value}");
+                }
 
                 // Horizontal Line
                 column.Item().PaddingVertical(5).LineHorizontal(1).LineColor(Colors.Black);

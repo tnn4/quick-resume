@@ -1,15 +1,4 @@
-﻿using QuestPDF.Drawing;
-using QuestPDF.Infrastructure;
-using QuestPDF.Helpers;
-using QuestPDF.Fluent;
-
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace pdf_test1.Resume;
+﻿namespace pdf_test1.Resume;
 
 internal class Resume_doc_model
 {
@@ -31,6 +20,7 @@ public class ResumeModel
 
 }
 
+// Generic Data Structure for Describing a Section
 public class Resume_Section<T>
 {
     public string? Title { get; set; }

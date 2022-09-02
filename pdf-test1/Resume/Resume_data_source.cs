@@ -1,14 +1,7 @@
-﻿using QuestPDF.Drawing;
-using QuestPDF.Infrastructure;
-using QuestPDF.Helpers;
-using QuestPDF.Fluent;
+﻿using QuestPDF.Helpers;
 
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Security.Cryptography.X509Certificates;
+
+
 
 namespace pdf_test1.Resume;
 

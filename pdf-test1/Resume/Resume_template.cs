@@ -2,17 +2,11 @@
 using QuestPDF.Infrastructure;
 using QuestPDF.Helpers;
 using QuestPDF.Fluent;
-
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.ComponentModel;
 using IContainer = QuestPDF.Infrastructure.IContainer;
-using System.Xml.Linq;
-using System.Data.Common;
-using System.Reflection;
+using IComponent = QuestPDF.Infrastructure.IComponent;
+
+using System.ComponentModel;
+
 using pdf_test1.Resume;
 
 namespace pdf_test1;
@@ -59,33 +53,8 @@ public partial class ResumeDoc : IDocument
         container.Column(column =>
         {
             // EDUCATION
-            /*
-            column.Item().Row(row =>
-            {
-                row.RelativeItem().Component(new Component_Section
-                {
-                    Section = "EDUCATION"
-                });
-            });
-            */
-            column.Item().Row(row =>
-            {
-                row.RelativeItem().Component(new Component_Education(new List<School>
-                {
-                    new School
-                    {
-                        Name = "Northsouthern University",
-                        Degree = "B.S. Marketing",
-                        GraduationDate = "May 1990"
-                    },
-                    new School
-                    {
-                        Name = "Southnorthern University",
-                        Degree = "M.S. Finance",
-                        GraduationDate = "May 1992"
-                    }
-                }));
-            });
+
+            EducationColumn(column);
             
             // EXPERIENCE
 
@@ -117,25 +86,102 @@ public partial class ResumeDoc : IDocument
                     }
                 }));
             });
+
+            // SKills
+
+            // Projects
         });
     }
 
-    public void compose_section(IContainer container)
+    #region component_functions
+
+    public void EducationColumn(ColumnDescriptor column)
+    {
+        column.Item().Row(row =>
+        {
+            row.RelativeItem().Component(new Component_Education(new List<School>
+                {
+                    new School
+                    {
+                        Name = "Northsouthern University",
+                        Degree = "B.S. Marketing",
+                        GraduationDate = "May 1990"
+                    },
+                    new School
+                    {
+                        Name = "Southnorthern University",
+                        Degree = "M.S. Finance",
+                        GraduationDate = "May 1992"
+                    }
+                }));
+        });
+    }
+
+    public void ExperienceColumn(ColumnDescriptor column)
+    {
+        column.Item().Row(row =>
+        {
+            row.RelativeItem().Component(new Component_Experience(new List<Job>
+                {
+                    new Job
+                    {
+                        Company = "company",
+                        Role = "role",
+                        StartDate = "May 1000",
+                        EndDate = "May 2000",
+                        Tasks = new List<string>
+                        {
+                            "task 1", "task 2", "task 3"
+                        }
+                    },
+                    new Job
+                    {
+                        Company = "company",
+                        Role = "role",
+                        StartDate = "May 1000",
+                        EndDate = "May 2000",
+                        Tasks = new List<string>
+                        {
+                            "task 1", "task 2", "task 3"
+                        }
+                    }
+                }));
+        });
+    }
+
+    public void SkillsColumn(ColumnDescriptor column)
+    {
+
+    }
+
+    public void ProjectsColumn(ColumnDescriptor column)
+    {
+
+    }
+    #endregion
+
+    public void compose_section(IContainer container, string section_name, IComponent component)
     {
         container.Column(column =>
         {
-            column.Item().Row( row =>
+            column.Item().Row(row =>
             {
-                row.RelativeItem().Component(new Component_Empty());
+                row.RelativeItem().Component(new Component_Section
+                {
+                    Section = section_name
+                });
             });
             column.Item().Row(row =>
             {
-                row.RelativeItem().Component(new Component_Empty());
+                if (component is null)
+                    row.RelativeItem().Component(new Component_Empty());
+                else
+                    row.RelativeItem().Component(component);
             });
         });
     }
 
-    // Create Contact info template
+    // Contact info
     public void compose_contact(IContainer container)
     {
         var titleStyle = TextStyle.Default.FontSize(16).SemiBold().FontColor(Colors.Black);
@@ -162,7 +208,7 @@ public partial class ResumeDoc : IDocument
         });
     }
 
-    // Create Education background template
+    // Education
     public void compose_education(IContainer container)
     {
         container.Row(row =>
@@ -192,7 +238,7 @@ public partial class ResumeDoc : IDocument
 
     }
 
-    // Create (Work) Experience template
+    // Experience
     public void compose_experience(IContainer container)
     {
         
@@ -227,7 +273,7 @@ public partial class ResumeDoc : IDocument
         
     }
 
-    // Create Skills template
+    // Skills
     public void compose_skills(IContainer container)
     {
         container.Row(row =>
@@ -250,7 +296,7 @@ public partial class ResumeDoc : IDocument
         });
     }
 
-    // Create Projects template
+    // Projects
     public void compose_projects(IContainer container)
     {
         container.Row(row =>
