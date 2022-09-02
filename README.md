@@ -23,3 +23,7 @@ Before pushing to git repository, make sure you clean build artifacts:
 At root directory:
 
 `dotnet clean`
+
+### TODO
+- output JSON
+- read JSON

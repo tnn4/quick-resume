@@ -28,10 +28,10 @@ public class TestFn
 public class DocTest
 {
 
-    public static void create_test_resume1()
+    public static void create_resume_example()
     {
-        var filePath = "resume.test1.pdf";
-        var model = Resume_data_source.generateExampleResume();
+        var filePath = "resume.example1.pdf";
+        var model = Resume_data_source.generateResumeExample();
         var resume_doc = new ResumeDoc(model);
         resume_doc.GeneratePdf(filePath);
         resume_doc.ShowInPreviewer();
@@ -136,7 +136,7 @@ public class JsonTest
     public static void Write_To_Json_File(string filePath, object obj)
     {
         var path = filePath;
-        var jsonString = Json.SerializeObject(obj);
+        var jsonString = Json.JsonifyObject(obj);
         File.WriteAllText(path, jsonString);
     }
 }

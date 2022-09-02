@@ -11,14 +11,19 @@ namespace pdf_test1;
 
 public class Json
 {
-    public static string SerializeObject(object obj)
+    public static string JsonifyObject(object obj)
     {
         return JsonSerializer.Serialize(obj);
     }
 
+    public static object ObjectifyJson(string json)
+    {
+        return JsonSerializer.Deserialize<object>(json);
+    }
+
     public static void PrintSerializedObject(object obj)
     {
-        Console.WriteLine(SerializeObject(obj));
-        Debug.WriteLine(SerializeObject(obj));
+        Console.WriteLine(JsonifyObject(obj));
+        Debug.WriteLine(JsonifyObject(obj));
     }
 }

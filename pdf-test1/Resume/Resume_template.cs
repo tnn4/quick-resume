@@ -43,7 +43,7 @@ public partial class ResumeDoc : IDocument
             {
                 page.Margin(20);
                 // page.Header().Element(compose_contact);
-                page.Content().Element(compose_example);
+                page.Content().Element(compose_content_example);
                 
             });
     }
@@ -52,19 +52,18 @@ public partial class ResumeDoc : IDocument
     {
     }
 
-    public void compose_example(IContainer container)
+    public void compose_content_example(IContainer container)
     {
         container.Column(column =>
         {
             // CONTACT
-            ContactColumn(column);
+            ContactColumnExample(column);
 
             // EDUCATION
-
-            EducationColumn(column);
+            EducationColumnExample(column);
 
             // EXPERIENCE
-            ExperienceColumn(column);
+            ExperienceColumnExample(column);
             /*
             column.Item().Row(row =>
             {
@@ -96,14 +95,23 @@ public partial class ResumeDoc : IDocument
             });
             */
             // SKills
-            SkillsColumn(column);
+            SkillsColumnExample(column);
             // Projects
-            ProjectsColumn(column);
+            ProjectsColumnExample(column);
         });
     }
 
     #region component_functions
-    public void ContactColumn(ColumnDescriptor column)
+
+    public void CreateColumn(ColumnDescriptor column, IComponent component)
+    {
+        column.Item().Row(row =>
+        {
+            row.RelativeItem().Component(component);
+        });
+    }
+
+    public void ContactColumnExample(ColumnDescriptor column)
     {
         column.Item().Row(row =>
         {
@@ -118,7 +126,7 @@ public partial class ResumeDoc : IDocument
         });
     }
 
-    public void EducationColumn(ColumnDescriptor column)
+    public void EducationColumnExample(ColumnDescriptor column)
     {
         column.Item().Row(row =>
         {
@@ -140,7 +148,7 @@ public partial class ResumeDoc : IDocument
         });
     }
 
-    public void ExperienceColumn(ColumnDescriptor column)
+    public void ExperienceColumnExample(ColumnDescriptor column)
     {
         column.Item().Row(row =>
         {
@@ -172,7 +180,7 @@ public partial class ResumeDoc : IDocument
         });
     }
 
-    public void SkillsColumn(ColumnDescriptor column)
+    public void SkillsColumnExample(ColumnDescriptor column)
     {
         column.Item().Row(row =>
         {
@@ -185,7 +193,7 @@ public partial class ResumeDoc : IDocument
         });
     }
 
-    public void ProjectsColumn(ColumnDescriptor column)
+    public void ProjectsColumnExample(ColumnDescriptor column)
     {
         column.Item().Row(row =>
         {

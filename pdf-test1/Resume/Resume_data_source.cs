@@ -1,13 +1,12 @@
 ﻿using QuestPDF.Helpers;
 
-
-
-
 namespace pdf_test1.Resume;
 
 internal class Resume_data_source
 {
-    public static ResumeModel generateExampleResume()
+
+    #region obsolete
+    public static ResumeModel generateResumeExample()
     {
         return new ResumeModel
         {
@@ -120,4 +119,5 @@ internal class Resume_data_source
 
         return projects;
     }
+    #endregion
 }

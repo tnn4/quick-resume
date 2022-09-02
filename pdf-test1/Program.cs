@@ -14,7 +14,7 @@ public class EntryPoint
     {
         // JsonTest.Test_Serialize_Experience();
         // JsonTest.Test_Serialize_Experiences();
-        DocTest.create_test_resume1();
+        DocTest.create_resume_example();
     }
 }
 
