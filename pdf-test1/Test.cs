@@ -28,7 +28,7 @@ public class TestFn
 public class DocTest
 {
 
-    public static void create_resume_test1()
+    public static void create_test_resume1()
     {
         var filePath = "resume.test1.pdf";
         var model = Resume_data_source.generateExampleResume();

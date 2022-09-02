@@ -10,12 +10,29 @@ using QuestPDF.Helpers;
 using QuestPDF.Fluent;
 using System.Reflection;
 using System.Numerics;
+using System.Xml.Linq;
+using System.Data.Common;
 
 namespace pdf_test1.Resume;
 
 internal class Resume_Components
 {
 }
+
+#region 
+public class Component_Section : IComponent
+{
+    public string Section { get; set; }
+
+    public void Compose(IContainer container)
+    {
+        container.Row(row =>
+        {
+            row.RelativeItem().Text($"{Section}");
+        });
+    }
+}
+#endregion
 
 #region Contact
 public class Component_Contact : IComponent
@@ -71,13 +88,10 @@ public class Component_Contact : IComponent
 
 public class Component_Education : IComponent
 {
-    public string Name { get; set; }
-    public string Degree { get; set; }
-    public DateTime GraduationDate { get; set; }
-
-    public Component_Education()
+    public List<School> Education { get; set; }
+    public Component_Education(List<School> education)
     {
-
+        Education = education;
     }
 
     public void Compose(IContainer container)
@@ -85,17 +99,21 @@ public class Component_Education : IComponent
         var titleStyle = TextStyle.Default.FontSize(16).SemiBold().FontColor(Colors.Black);
         container.Row(row =>
         {
-            row.RelativeItem().Column(column =>
+            foreach (School edu in Education)
             {
-                column.Item().Text($"{Name}");
-                column.Item().Text($"{Degree}");
-                column.Item().Text($"{GraduationDate}");
-                // Horizontal Line
-                column.Item().PaddingVertical(5).LineHorizontal(1).LineColor(Colors.Black);
-            });
-        });
-    }
+                row.RelativeItem().Column(column =>
+                {
+                    column.Item().Text($"{edu.Name}");
+                    column.Item().Text($"{edu.Degree}");
+                    column.Item().Text($"{edu.GraduationDate}");
+                    // Horizontal Line
+                    column.Item().PaddingVertical(5).LineHorizontal(1).LineColor(Colors.Black);
+                });
+            }
 
+        });
+
+    }
 }
 
 #endregion
@@ -182,5 +200,31 @@ public class Component_Skill : IComponent
 #endregion
 
 #region Projects
+public class Component_Projects : IComponent
+{
+    public string ProjectName { get; set; }
+    public string Description { get; set; }
+    public Component_Projects(string name, string description)
+    {
+        ProjectName = name;
+        Description = description;
+    }
 
+    public void Compose(IContainer container)
+    {
+        var titleStyle = TextStyle.Default.FontSize(16).SemiBold().FontColor(Colors.Black);
+        container.Row(row =>
+        {
+            row.RelativeItem().Column(column =>
+            {
+                column.Item().Text($"{ProjectName}");
+                column.Item().Text($"{Description}");
+
+                // Horizontal Line
+                column.Item().PaddingVertical(5).LineHorizontal(1).LineColor(Colors.Black);
+            });
+        });
+    }
+
+}
 #endregion

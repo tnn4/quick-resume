@@ -12,8 +12,9 @@ public class EntryPoint
 {
     static void Main()
     {
-        JsonTest.Test_Serialize_Experience();
-        JsonTest.Test_Serialize_Experiences();
+        // JsonTest.Test_Serialize_Experience();
+        // JsonTest.Test_Serialize_Experiences();
+        DocTest.create_test_resume1();
     }
 }
 

@@ -60,11 +60,29 @@ public partial class ResumeDoc : IDocument
         {
             column.Item().Row(row =>
             {
-                row.RelativeItem().Component(new Component_Contact("name", "email", "phone"));
+                row.RelativeItem().Component(new Component_Section
+                {
+                    Section = "EDUCATION"
+                });
             });
+            
             column.Item().Row(row =>
             {
-                row.RelativeItem().Component(new Component_Contact("name2", "email2", "phone2"));
+                row.RelativeItem().Component(new Component_Education(new List<School>
+                {
+                    new School
+                    {
+                        Name = "Northsouthern University",
+                        Degree = "B.S. Marketing",
+                        GraduationDate = new DateTime(2000,5,30)
+                    },
+                    new School
+                    {
+                        Name = "Southnorthern University",
+                        Degree = "M.S. Finance",
+                        GraduationDate = new DateTime(2002,5,30)
+                    }
+                }));
             });
         });
     }
