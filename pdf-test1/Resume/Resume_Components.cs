@@ -98,6 +98,14 @@ public class Component_Education : IComponent
                     foreach (School edu in Education)
                     {
                         column.Item().Text($"{edu.Name}");
+                        // Row relative item | relative item |
+                        column.Item().Row(row =>
+                        {
+                            row.RelativeItem().Text($"{edu.Name}");
+                            row.RelativeItem().AlignRight().Text($"{edu.GraduationDate}");
+                        });
+                        // column item
+                        // column item
                         column.Item().Text($"{edu.Degree}");
                         column.Item().Text($"{edu.GraduationDate}");
                     }
@@ -153,8 +161,21 @@ public class Component_Experience : IComponent
                 {
                     column.Item()
                     //.Text($"{job.Company}" + Constants.LONG_SPACE + job.StartDate.ToString("MMM yyyy") + "-" + job.EndDate.ToString("MMM yyyy"));
-                    .Text($"{job.Company} {job.StartDate} - {job.EndDate}");
+                    //.Text($"{job.Company} {job.StartDate} - {job.EndDate}");
+                        .Text(text =>
+                        {
+                            text.Span($"{job.Company}");
+                        });
+
+                    column.Item().Row(row =>
+                    {
+                        // HELLO         Start Date - End Date
+                        row.RelativeItem().Text("HELLO");
+                        row.RelativeItem().AlignRight().Text($"{job.StartDate} - {job.EndDate}");
+                    });
+
                     column.Item().Text($"{job.Role}").Italic();
+                    
                     foreach (string task in job.Tasks)
                     {
                         column.Item().ScaleToFit().Text($"> {task}");
