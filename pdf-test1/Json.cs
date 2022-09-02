@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-using System.Text.Json;
+﻿using System.Text.Json;
 using System.Diagnostics;
 
 namespace pdf_test1;
@@ -25,5 +19,12 @@ public class Json
     {
         Console.WriteLine(JsonifyObject(obj));
         Debug.WriteLine(JsonifyObject(obj));
+    }
+
+    public static void Write_To_Json_File(object obj, string filePath )
+    {
+        var path = filePath;
+        var jsonString = Json.JsonifyObject(obj);
+        File.WriteAllText(path, jsonString);
     }
 }

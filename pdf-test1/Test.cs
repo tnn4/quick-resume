@@ -64,12 +64,12 @@ public class TestDoc
 public class TestJson
 {
     
+    
+    
     public static void Serialize_Components()
     {
-        var Component_Contact = new Component_Contact 
-        {
-
-        };
+        var componentsExample = new ResumeComponentsExample();
+        Json.Write_To_Json_File(componentsExample, "componentsExample.json");
     }
     
     public static void Serialize_Experience()
@@ -93,7 +93,7 @@ public class TestJson
 
         Json.PrintSerializedObject(experiences);
         
-        Write_To_Json_File("experience.json", experiences);
+        Json.Write_To_Json_File(experiences, "experience.json" );
     }
 
     public static void Serialize_Experiences()
@@ -135,13 +135,8 @@ public class TestJson
             }
         };
 
-        Write_To_Json_File("experiences.json", experiences);
+        Json.Write_To_Json_File(experiences, "experiences.json");
     }
 
-    public static void Write_To_Json_File(string filePath, object obj)
-    {
-        var path = filePath;
-        var jsonString = Json.JsonifyObject(obj);
-        File.WriteAllText(path, jsonString);
-    }
+
 }

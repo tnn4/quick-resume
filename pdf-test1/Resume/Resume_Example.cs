@@ -197,15 +197,15 @@ public partial class ResumeExample : IDocument
 }
 #endregion
 
-public class PersonExample
+public class ResumeComponentsExample
 {
-    public Component_Contact Contact;
-    public Component_Education Education;
-    public Component_Experience Experience;
-    public Component_Skill Skills;
-    public Component_Projects Projects;
+    public Component_Contact Contact { get; set; }
+    public Component_Education Education { get; set; }
+    public Component_Experience Experience { get; set; }
+    public Component_Skill Skills { get; set; }
+    public Component_Projects Projects { get; set; }
 
-    public PersonExample()
+    public ResumeComponentsExample()
     {
         Contact = new Component_Contact
         {
@@ -217,7 +217,7 @@ public class PersonExample
         };
 
         Education = new Component_Education(new List<School>
-                {
+        {
                     new School
                     {
                         Name = "Northsouthern University",
@@ -233,7 +233,7 @@ public class PersonExample
         });
 
         Experience = new Component_Experience(new List<Job>
-                {
+        {
                     new Job
                     {
                         Company = "Crapple",
@@ -256,19 +256,19 @@ public class PersonExample
                             "task 1", "task 2", "task 3"
                         }
                     }
-                });
+        });
 
         Skills = new Component_Skill(new Dictionary<string, string>
-            {
+        {
                 { "Design", "calligraphy , UX , UI" },
                 { "Management", "yelling, controlling, authoritarian" },
                 { "Communication", "simple, innovative, wow" },
-            });
+        });
 
         Projects = new Component_Projects(new Dictionary<string, string>
-            {
+        {
                 { "Crapple cryPhone", "lead designer on an overpriced touch screen smartphone that will make your wallet bleed and bring you to tears" },
                 { "Crapple cryPad", "lead designer of a tablet that's actually an overpriced brick" }
-            });
+         });
     }
 }
