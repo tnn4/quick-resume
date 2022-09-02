@@ -1,6 +1,6 @@
 ﻿namespace pdf_test1.Resume;
 
-internal class Resume_doc_model
+internal class Resume_Doc_Model
 {
 }
 // CONSTANTS

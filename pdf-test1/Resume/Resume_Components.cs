@@ -25,6 +25,10 @@ public class Component_Section : IComponent
 #endregion
 
 #region Contact
+
+/// <summary>
+/// component objects
+/// </summary>
 public class Component_Contact : IComponent
 {
     public string Name { get; set; }

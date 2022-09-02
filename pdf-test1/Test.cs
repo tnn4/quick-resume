@@ -2,11 +2,7 @@
 using pdf_test1.Resume;
 using QuestPDF.Fluent;
 using QuestPDF.Previewer;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+
 
 namespace pdf_test1;
 
@@ -25,13 +21,13 @@ public class TestFn
     }
 }
 
-public class DocTest
+public class TestDoc
 {
 
     public static void create_resume_example()
     {
         var filePath = "resume.example1.pdf";
-        var model = Resume_data_source.generateResumeExample();
+        var model = Resume_Data_Source.generateResumeExample();
         var resume_doc = new ResumeDoc(model);
         resume_doc.GeneratePdf(filePath);
         resume_doc.ShowInPreviewer();
@@ -65,9 +61,18 @@ public class DocTest
     }
 }
 
-public class JsonTest
+public class TestJson
 {
-    public static void Test_Serialize_Experience()
+    
+    public static void Serialize_Components()
+    {
+        var Component_Contact = new Component_Contact 
+        {
+
+        };
+    }
+    
+    public static void Serialize_Experience()
     {
         var experiences = new List<Job>();
         
@@ -91,7 +96,7 @@ public class JsonTest
         Write_To_Json_File("experience.json", experiences);
     }
 
-    public static void Test_Serialize_Experiences()
+    public static void Serialize_Experiences()
     {
         var experiences = new Experiences
         {

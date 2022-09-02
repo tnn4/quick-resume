@@ -2,7 +2,7 @@
 
 namespace pdf_test1.Resume;
 
-internal class Resume_data_source
+internal class Resume_Data_Source
 {
 
     #region obsolete
