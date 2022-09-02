@@ -10,7 +10,7 @@ Input: JSON
 
 "Education":{"Education":[{"Name":"Northsouthern University","Degree":"B.S. Marketing","GraduationDate":"May 1990"},{"Name":"Southnorthern University","Degree":"M.S. Finance","GraduationDate":"May 1992"}]},
 
-"Experience":{"Experiences":[{"Company":"Crapple","Role":"Founder/CEO","StartDate":"Jan 1976","EndDate":"Sep 1985","Tasks":["task 1","task 2","task 3"]},{"Company":"Flixar","Role":"Founder/CEO","StartDate":"May 1986","EndDate":"May 2006","Tasks":["task 1","task 2","task 3"]}]},"Skills":{"Skills":{"Design":"calligraphy , UX , UI","Management":"yelling, controlling, authoritarian","Communication":"simple, innovative, wow"}},
+"Experience":{"Experiences":[{"Company":"Crapple","Role":"Founder/CEO","StartDate":"Jan 1976","EndDate":"Sep 1985","Tasks":["task 1","task 2","task 3"]},{"Company":"Flixar","Role":"Founder/CEO","StartDate":"May 1986","EndDate":"May 2006","Tasks":["task 1","task 2","task 3"]}]},"Skills":{"Skills":{"Design":"calligraphy , UX , UI","Management":"yelling, controlling, ","Communication":"simple, innovative, wow"}},
 
 "Projects":{"Projects":{"Crapple cryPhone":"lead designer on an overpriced touch screen smartphone that will make your wallet bleed and bring you to tears","Crapple cryPad":"lead designer of a tablet that\u0027s actually an overpriced brick"}}}
 ```

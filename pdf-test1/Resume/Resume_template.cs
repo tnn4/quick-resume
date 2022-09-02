@@ -19,6 +19,7 @@ public partial class ResumeDoc : IDocument
 {
     public ResumeModel Model { get; }
 
+    // CONSTRUCTOR
     public ResumeDoc(ResumeModel model)
     {
         Model = model;
@@ -77,39 +78,10 @@ public partial class ResumeDoc : IDocument
 
             // EXPERIENCE
             ExperienceColumnExample(column);
-            /*
-            column.Item().Row(row =>
-            {
-                row.RelativeItem().Component(new Component_Experience(new List<Job>
-                {
-                    new Job
-                    {
-                        Company = "The Cleaning Shop",
-                        Role = "janitor",
-                        StartDate = "May 1000",
-                        EndDate = "May 2000",
-                        Tasks = new List<string>
-                        {
-                            "task 1", "task 2", "task 3"
-                        }
-                    },
-                    new Job
-                    {
-                        Company = "Fairways Aerospace",
-                        Role = "aerospace engineer",
-                        StartDate = "May 1000",
-                        EndDate = "May 2000",
-                        Tasks = new List<string>
-                        {
-                            "task 1", "task 2", "task 3"
-                        }
-                    }
-                }));
-            });
-            */
-            // SKills
+
+            // SKILLS
             SkillsColumnExample(column);
-            // Projects
+            // PROJECTS
             ProjectsColumnExample(column);
         });
     }

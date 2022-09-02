@@ -26,7 +26,81 @@ public partial class ResumeExample : IDocument
 
 public partial class ResumeExample : IDocument
 {
+    public Component_Contact Contact { get; set; }
+    public Component_Education Education { get; set; }
+    public Component_Experience Experience { get; set; }
+    public Component_Skill Skills { get; set; }
+    public Component_Projects Projects { get; set; }
 
+    public ResumeExample()
+    {
+        Contact = new Component_Contact
+        {
+            Name = "Steve Jobsfinder",
+            Email = "sjobsfinder@crapple.com",
+            Phone = "123-456-7890",
+            Linkedin = new Uri("https://linkedin.com/in/steve-jobsfinder"),
+            Github = new Uri("https://github.com/sjobsfinder")
+        };
+
+        Education = new Component_Education(new List<School>
+        {
+                    new School
+                    {
+                        Name = "Northsouthern University",
+                        Degree = "B.S. Marketing",
+                        GraduationDate = "May 1970"
+                    },
+                    new School
+                    {
+                        Name = "Southnorthern University",
+                        Degree = "MBA",
+                        GraduationDate = "May 1972"
+                    }
+        });
+
+        Experience = new Component_Experience(new List<Job>
+        {
+                    new Job
+                    {
+                        Company = "Crapple Inc",
+                        Role = "Founder/CEO",
+                        StartDate = "Jan 1976",
+                        EndDate = "Sep 1985",
+                        Tasks = new List<string>
+                        {
+                            "Founded an electronics startup in a garage ",
+                            "Designed the overpriced electronics for the masses",
+                        }
+                    },
+                    new Job
+                    {
+                        Company = "Flixar",
+                        Role = "Founder/CEO",
+                        StartDate = "May 1986",
+                        EndDate = "May 2006",
+                        Tasks = new List<string>
+                        {
+                            "made janky 3d animated films using computer graphics after getting kicked out at Crapple",
+                        }
+                    }
+        });
+
+        Skills = new Component_Skill(new Dictionary<string, string>
+        {
+                { "Design", "UX , UI, Ucry" },
+                { "Management", "yelling, micro-management, cutting budgets" },
+
+        });
+
+        Projects = new Component_Projects(new Dictionary<string, string>
+        {
+            {"Crapple cryMac Computer", "Lead designer of the desktop computer that is so bad it will bring you to tears" },
+            {"Crapple cryPod", "Designed an overpriced music player that actually doesn't really work that well" },
+            {"Crapple cryPhone", "Lead designer on an overpriced touch screen smartphone that will make your wallet bleed and bring you to tears" },
+            {"Crapple cryPad", "Lead designer of a tablet that's actually an overpriced brick" }
+        });
+    }
 
     public void compose_resume_example(IDocumentContainer container)
     {
@@ -54,39 +128,9 @@ public partial class ResumeExample : IDocument
 
             // EXPERIENCE
             ExperienceColumnExample(column);
-            /*
-            column.Item().Row(row =>
-            {
-                row.RelativeItem().Component(new Component_Experience(new List<Job>
-                {
-                    new Job
-                    {
-                        Company = "The Cleaning Shop",
-                        Role = "janitor",
-                        StartDate = "May 1000",
-                        EndDate = "May 2000",
-                        Tasks = new List<string>
-                        {
-                            "task 1", "task 2", "task 3"
-                        }
-                    },
-                    new Job
-                    {
-                        Company = "Fairways Aerospace",
-                        Role = "aerospace engineer",
-                        StartDate = "May 1000",
-                        EndDate = "May 2000",
-                        Tasks = new List<string>
-                        {
-                            "task 1", "task 2", "task 3"
-                        }
-                    }
-                }));
-            });
-            */
-            // SKills
+            // SKILLS
             SkillsColumnExample(column);
-            // Projects
+            // PROJECTS
             ProjectsColumnExample(column);
         });
     }
@@ -222,13 +266,13 @@ public class ResumeComponentsExample
                     {
                         Name = "Northsouthern University",
                         Degree = "B.S. Marketing",
-                        GraduationDate = "May 1990"
+                        GraduationDate = "May 1970"
                     },
                     new School
                     {
                         Name = "Southnorthern University",
-                        Degree = "M.S. Finance",
-                        GraduationDate = "May 1992"
+                        Degree = "MBA",
+                        GraduationDate = "May 1972"
                     }
         });
 
@@ -236,13 +280,14 @@ public class ResumeComponentsExample
         {
                     new Job
                     {
-                        Company = "Crapple",
+                        Company = "Crapple Inc",
                         Role = "Founder/CEO",
                         StartDate = "Jan 1976",
                         EndDate = "Sep 1985",
                         Tasks = new List<string>
                         {
-                            "task 1", "task 2", "task 3"
+                            "Founded an electronics startup in a garage ", 
+                            "Designed the overpriced electronics for the masses",
                         }
                     },
                     new Job
@@ -253,22 +298,24 @@ public class ResumeComponentsExample
                         EndDate = "May 2006",
                         Tasks = new List<string>
                         {
-                            "task 1", "task 2", "task 3"
+                            "made janky 3d animated films using computer graphics after getting kicked out at Crapple", 
                         }
                     }
         });
 
         Skills = new Component_Skill(new Dictionary<string, string>
         {
-                { "Design", "calligraphy , UX , UI" },
-                { "Management", "yelling, controlling, authoritarian" },
-                { "Communication", "simple, innovative, wow" },
+                { "Design", "UX , UI, Ucry" },
+                { "Management", "yelling, micro-management, cutting budgets" },
+                
         });
 
         Projects = new Component_Projects(new Dictionary<string, string>
         {
-                { "Crapple cryPhone", "lead designer on an overpriced touch screen smartphone that will make your wallet bleed and bring you to tears" },
-                { "Crapple cryPad", "lead designer of a tablet that's actually an overpriced brick" }
-         });
+            {"Crapple cryMac Computer", "Lead designer of the desktop computer that is so bad it will bring you to tears" },
+            {"Crapple cryPod", "Designed an overpriced music player that actually doesn't really work that well" },
+            {"Crapple cryPhone", "Lead designer on an overpriced touch screen smartphone that will make your wallet bleed and bring you to tears" },
+            {"Crapple cryPad", "Lead designer of a tablet that's actually an overpriced brick" }
+        });
     }
 }

@@ -1,12 +1,12 @@
 ﻿namespace pdf_test1.Resume;
 
-internal class Resume_Doc_Model
+internal class Resume_Model
 {
 }
 // CONSTANTS
 public static class Constants
 {
-    public const string LONG_SPACE = "                                                      ";
+    public const string SPACE = " ";
 }
 
 // DOCUMENT MODEL
