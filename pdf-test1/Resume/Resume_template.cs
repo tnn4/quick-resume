@@ -58,9 +58,10 @@ public partial class ResumeDoc : IDocument
             // EDUCATION
 
             EducationColumn(column);
-            
-            // EXPERIENCE
 
+            // EXPERIENCE
+            ExperienceColumn(column);
+            /*
             column.Item().Row(row =>
             {
                 row.RelativeItem().Component(new Component_Experience(new List<Job>
@@ -89,7 +90,7 @@ public partial class ResumeDoc : IDocument
                     }
                 }));
             });
-
+            */
             // SKills
             SkillsColumn(column);
             // Projects
@@ -143,10 +144,10 @@ public partial class ResumeDoc : IDocument
                 {
                     new Job
                     {
-                        Company = "company",
-                        Role = "role",
-                        StartDate = "May 1000",
-                        EndDate = "May 2000",
+                        Company = "Crapple",
+                        Role = "Founder/CEO",
+                        StartDate = "Jan 1976",
+                        EndDate = "Sep 1985",
                         Tasks = new List<string>
                         {
                             "task 1", "task 2", "task 3"
@@ -154,10 +155,10 @@ public partial class ResumeDoc : IDocument
                     },
                     new Job
                     {
-                        Company = "company",
-                        Role = "role",
-                        StartDate = "May 1000",
-                        EndDate = "May 2000",
+                        Company = "Flixar",
+                        Role = "Founder/CEO",
+                        StartDate = "May 1986",
+                        EndDate = "May 2006",
                         Tasks = new List<string>
                         {
                             "task 1", "task 2", "task 3"
@@ -173,9 +174,9 @@ public partial class ResumeDoc : IDocument
         {
             row.RelativeItem().Component(new Component_Skill(new Dictionary<string, string>
             {
-                { "skill type 1", "skill1 , skill2 , skill3" },
-                { "skill type 2", "skill2.1, skill2.2, skill 2.3" },
-                { "skill type 3", "skill3.1, skill3.2, skill 3.3" },
+                { "Design", "calligraphy , UX , UI" },
+                { "Management", "yelling, controlling, authoritarian" },
+                { "Communication", "simple, innovative, wow" },
             }));
         });
     }
@@ -186,8 +187,8 @@ public partial class ResumeDoc : IDocument
         {
             row.RelativeItem().Component(new Component_Projects(new Dictionary<string, string>
             {
-                { "project 1", "project description" },
-                { "project 2", "project description" }
+                { "Crapple cryPhone", "lead designer on an overpriced touch screen smartphone that will make your wallet bleed and bring you to tears" },
+                { "Crapple cryPad", "lead designer of a tablet that's actually an overpriced brick" }
             }));
         });
     }

@@ -224,7 +224,7 @@ public class Component_Skill : IComponent
                     // column.Item().Text($"{kvp.Key}: {kvp.Value}");
                     column.Item().Text(text =>
                     {
-                        text.Span($"{kvp.Key}:").Bold();
+                        text.Span($"{kvp.Key}: ").Bold();
                         text.Span($"{kvp.Value}");
                     });
                 }
