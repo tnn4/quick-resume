@@ -49,14 +49,14 @@ public class Component_Contact : IComponent
 
     public void Compose(IContainer container)
     {
-        var titleStyle = TextStyle.Default.FontSize(16).SemiBold().FontColor(Colors.Black);
+        
         container.Row(row =>
         {
             row.RelativeItem().Column(column =>
             {
                 // Contact Info
                 // Name
-                column.Item().Text($"{Name}").Style(titleStyle);
+                column.Item().Text($"{Name}").Style(Style.TitleStyle);
                 // Email
                 column.Item().Text($"{Email}");
                 // Linkedin
@@ -87,13 +87,13 @@ public class Component_Education : IComponent
 
     public void Compose(IContainer container)
     {
-        var titleStyle = TextStyle.Default.FontSize(12).SemiBold().FontColor(Colors.Black);
+
         container.Row(row =>
         {
                 // foreach
                 row.RelativeItem().Column(column =>
                 {
-                    column.Item().Text("EDUCATION").Style(titleStyle);
+                    column.Item().Text("EDUCATION").Style(Style.SectionStyle);
 
                     foreach (School edu in Education)
                     {
@@ -139,14 +139,14 @@ public class Component_Experience : IComponent
     }
     public void Compose(IContainer container)
     {
-        var boldStyle = TextStyle.Default.FontSize(12).SemiBold().FontColor(Colors.Black);
+
         container.Row(row =>
         {
             row.RelativeItem().Column(column =>
             {
                 
 
-                column.Item().Text("EXPERIENCE").Style(boldStyle);
+                column.Item().Text("EXPERIENCE").Style(Style.SectionStyle);
 
 
                 foreach (Job job in Experiences)
@@ -183,13 +183,13 @@ public class Component_Skill : IComponent
 
     public void Compose(IContainer container)
     {
-        var boldStyle = TextStyle.Default.FontSize(12).SemiBold().FontColor(Colors.Black);
+
         container.Row(row =>
         {
             
             row.RelativeItem().Column(column =>
             {
-                column.Item().Text("SKILLS AND INTERESTS").Style(boldStyle);
+                column.Item().Text("SKILLS AND INTERESTS").Style(Style.SectionStyle);
                 foreach (KeyValuePair<string,string> kvp in Skills)
                 {
                     // column.Item().Text($"{kvp.Key}: {kvp.Value}");
@@ -226,6 +226,7 @@ public class Component_Projects : IComponent
         {
             row.RelativeItem().Column(column =>
             {
+                column.Item().Text("PROJECTS").Style(Style.SectionStyle);
                 foreach (KeyValuePair<string, string> kvp in Projects)
                 {
                     column.Item().Text($"{kvp.Key}").Bold();
@@ -247,4 +248,10 @@ public class Component_Empty : IComponent
     {
 
     }
+}
+
+public static class Style
+{
+    public static TextStyle TitleStyle = TextStyle.Default.FontSize(16).SemiBold().FontColor(Colors.Black);
+    public static TextStyle SectionStyle = TextStyle.Default.FontSize(12).SemiBold().FontColor(Colors.Black);
 }
