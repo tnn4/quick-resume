@@ -17,7 +17,7 @@ Input: JSON
 
 Output PDF Resume
 
-[PDF](resume.example1.jpg)
+![Resume example](resume.example1.jpg)
 
 Create new visual studio console project 
 
