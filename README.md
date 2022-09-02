@@ -1,6 +1,6 @@
 Repo for creating Resume template using QuestPDF
 
-The goal is to allow convenient creation of a single page PDF resume by simple editing text if using a word processor does not give consistent results.
+This apps creates PDF resumes by using a template engine and  allows convenient creation of a single page PDF resume by simply editing text if using a word processor does not give consistent formatting.
 
 Example:
 
