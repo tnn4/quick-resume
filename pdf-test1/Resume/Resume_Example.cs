@@ -196,7 +196,8 @@ public partial class ResumeExample : IDocument
                         EndDate = "Sep 1985",
                         Tasks = new List<string>
                         {
-                            "task 1", "task 2", "task 3"
+                            "Founded an electronics startup in a garage ",
+                            "Designed the overpriced electronics for the masses",
                         }
                     },
                     new Job
@@ -207,7 +208,7 @@ public partial class ResumeExample : IDocument
                         EndDate = "May 2006",
                         Tasks = new List<string>
                         {
-                            "task 1", "task 2", "task 3"
+                            "made janky 3d animated films using computer graphics after getting kicked out at Crapple",
                         }
                     }
                 }));
@@ -221,8 +222,8 @@ public partial class ResumeExample : IDocument
             row.RelativeItem().Component(new Component_Skill(new Dictionary<string, string>
             {
                 { "Design", "calligraphy , UX , UI" },
-                { "Management", "yelling, controlling, authoritarian" },
-                { "Communication", "simple, innovative, wow" },
+                { "Management", "yelling, micro-management, cutting budgets" },
+                
             }));
         });
     }
@@ -233,8 +234,10 @@ public partial class ResumeExample : IDocument
         {
             row.RelativeItem().Component(new Component_Projects(new Dictionary<string, string>
             {
-                { "Crapple cryPhone", "lead designer on an overpriced touch screen smartphone that will make your wallet bleed and bring you to tears" },
-                { "Crapple cryPad", "lead designer of a tablet that's actually an overpriced brick" }
+                {"Crapple cryMac Computer", "Lead designer of the desktop computer that is so bad it will bring you to tears" },
+                {"Crapple cryPod", "Designed an overpriced music player that actually doesn't really work that well" },
+                {"Crapple cryPhone", "Lead designer on an overpriced touch screen smartphone that will make your wallet bleed and bring you to tears" },
+                {"Crapple cryPad", "Lead designer of a tablet that's actually an overpriced brick" }
             }));
         });
     }

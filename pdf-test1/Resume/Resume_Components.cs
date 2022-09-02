@@ -69,11 +69,11 @@ public class Component_Contact : IComponent
                 column.Item().Text($"{Name}").Style(Style.TitleStyle);
                 // Email
                 column.Item().Text($"{Email}");
-                // Linkedin
-                if (Linkedin is not null)
-                    column.Item().Hyperlink($"{Linkedin}");
                 // Phone
                 column.Item().Text($"{Phone}");
+                // Linkedin
+                if (Linkedin is not null)
+                    column.Item().Text($"{Linkedin}");
                 // Github
                 if (Github is not null)
                     column.Item().Text($"{Github}");
@@ -122,7 +122,7 @@ public class Component_Education : IComponent
 
                     // Horizontal Line
                     column.Item().PaddingVertical(5).LineHorizontal(1).LineColor(Colors.Black);
-                    Line.make_horizontal_line_break(column, Colors.Red.Medium);
+                    // Line.make_horizontal_line_break(column, Colors.Red.Medium);
                 });
 
 

@@ -35,8 +35,6 @@ public partial class ResumeDoc : IDocument
 
 public partial class ResumeDoc : IDocument
 {
-    
-
     public void compose_resume_example(IDocumentContainer container)
     {
         container
@@ -44,47 +42,11 @@ public partial class ResumeDoc : IDocument
             {
                 page.Margin(20);
                 // page.Header().Element(compose_contact);
-                page.Content().Element(compose_content_example);
+                // page.Content().Element(compose_content_example);
                 
             });
     }
-    
-    public void compose_content(IContainer container)
-    {
-    }
 
-    public void component_to_json()
-    {
-        //  component object -->[serialize] --> JSON --> [PDF]
-        var contactComponent = new Component_Contact
-        {
-            
-        };
-    }
-
-    public void json_to_component()
-    {
-        //  JSON -->[deserialize] --> component object --> [PDF]
-    }
-    public void compose_content_example(IContainer container)
-    {
-        container.Column(column =>
-        {
-            // CONTACT
-            ContactColumnExample(column);
-
-            // EDUCATION
-            EducationColumnExample(column);
-
-            // EXPERIENCE
-            ExperienceColumnExample(column);
-
-            // SKILLS
-            SkillsColumnExample(column);
-            // PROJECTS
-            ProjectsColumnExample(column);
-        });
-    }
 
     #region component_functions
 
@@ -96,99 +58,6 @@ public partial class ResumeDoc : IDocument
         });
     }
 
-    public void ContactColumnExample(ColumnDescriptor column)
-    {
-        column.Item().Row(row =>
-        {
-            row.RelativeItem().Component(new Component_Contact
-            {
-                Name = "Steve Jobsfinder",
-                Email = "sjobsfinder@crapple.com",
-                Phone = "123-456-7890",
-                Linkedin = new Uri("https://linkedin.com/in/steve-jobsfinder"),
-                Github = new Uri("https://github.com/sjobsfinder")
-            });
-        });
-    }
-
-    public void EducationColumnExample(ColumnDescriptor column)
-    {
-        column.Item().Row(row =>
-        {
-            row.RelativeItem().Component(new Component_Education(new List<School>
-                {
-                    new School
-                    {
-                        Name = "Northsouthern University",
-                        Degree = "B.S. Marketing",
-                        GraduationDate = "May 1990"
-                    },
-                    new School
-                    {
-                        Name = "Southnorthern University",
-                        Degree = "M.S. Finance",
-                        GraduationDate = "May 1992"
-                    }
-                }));
-        });
-    }
-
-    public void ExperienceColumnExample(ColumnDescriptor column)
-    {
-        column.Item().Row(row =>
-        {
-            row.RelativeItem().Component(new Component_Experience(new List<Job>
-                {
-                    new Job
-                    {
-                        Company = "Crapple",
-                        Role = "Founder/CEO",
-                        StartDate = "Jan 1976",
-                        EndDate = "Sep 1985",
-                        Tasks = new List<string>
-                        {
-                            "task 1", "task 2", "task 3"
-                        }
-                    },
-                    new Job
-                    {
-                        Company = "Flixar",
-                        Role = "Founder/CEO",
-                        StartDate = "May 1986",
-                        EndDate = "May 2006",
-                        Tasks = new List<string>
-                        {
-                            "task 1", "task 2", "task 3"
-                        }
-                    }
-                }));
-        });
-    }
-
-    public void SkillsColumnExample(ColumnDescriptor column)
-    {
-        column.Item().Row(row =>
-        {
-            row.RelativeItem().Component(new Component_Skill(new Dictionary<string, string>
-            {
-                { "Design", "calligraphy , UX , UI" },
-                { "Management", "yelling, controlling, authoritarian" },
-                { "Communication", "simple, innovative, wow" },
-            }));
-        });
-    }
-
-    public void ProjectsColumnExample(ColumnDescriptor column)
-    {
-        column.Item().Row(row =>
-        {
-            row.RelativeItem().Component(new Component_Projects(new Dictionary<string, string>
-            {
-                { "Crapple cryPhone", "lead designer on an overpriced touch screen smartphone that will make your wallet bleed and bring you to tears" },
-                { "Crapple cryPad", "lead designer of a tablet that's actually an overpriced brick" }
-            }));
-        });
-    }
     #endregion
 
 

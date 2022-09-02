@@ -28,7 +28,8 @@ public class TestDoc
     {
         var filePath = "resume.example1.pdf";
         var model = Resume_Data_Source.generateResumeExample();
-        var resume_doc = new ResumeDoc(model);
+        // var resume_doc = new ResumeDoc(model);
+        var resume_doc = new ResumeExample(model);
         resume_doc.GeneratePdf(filePath);
         resume_doc.ShowInPreviewer();
     }
