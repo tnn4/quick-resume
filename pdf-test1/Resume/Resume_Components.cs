@@ -33,6 +33,10 @@ public class Component_Contact : IComponent
     public Uri? Linkedin { get; set; }
     public Uri? Github { get; set; }
 
+    public Component_Contact()
+    {
+
+    }
     public Component_Contact(string name, string email, string phone)
     {
         Name = name;
@@ -42,7 +46,9 @@ public class Component_Contact : IComponent
 
     public Component_Contact(string name, string email, string phone, string linkedin, string github)
     {
-        Name = name; Email = email; Phone = phone;
+        Name = name; 
+        Email = email; 
+        Phone = phone;
         Linkedin = new Uri(linkedin);
         Github = new Uri(github);
     }
@@ -90,14 +96,14 @@ public class Component_Education : IComponent
 
         container.Row(row =>
         {
-                // foreach
+                // foreach here if you want row | row
                 row.RelativeItem().Column(column =>
                 {
                     column.Item().Text("EDUCATION").Style(Style.SectionStyle);
 
                     foreach (School edu in Education)
                     {
-                        column.Item().Text($"{edu.Name}");
+                        // column.Item().Text($"{edu.Name}");
                         // Row relative item | relative item |
                         column.Item().Row(row =>
                         {
@@ -106,12 +112,13 @@ public class Component_Education : IComponent
                         });
                         // column item
                         // column item
-                        column.Item().Text($"{edu.Degree}");
-                        column.Item().Text($"{edu.GraduationDate}");
+                        column.Item().Text($"{edu.Degree}").Italic();
+                        // column.Item().Text($"{edu.GraduationDate}");
                     }
 
                     // Horizontal Line
                     column.Item().PaddingVertical(5).LineHorizontal(1).LineColor(Colors.Black);
+                    Line.make_horizontal_line_break(column, Colors.Red.Medium);
                 });
 
 
@@ -159,18 +166,18 @@ public class Component_Experience : IComponent
 
                 foreach (Job job in Experiences)
                 {
-                    column.Item()
+                    /*
                     //.Text($"{job.Company}" + Constants.LONG_SPACE + job.StartDate.ToString("MMM yyyy") + "-" + job.EndDate.ToString("MMM yyyy"));
                     //.Text($"{job.Company} {job.StartDate} - {job.EndDate}");
                         .Text(text =>
                         {
                             text.Span($"{job.Company}");
                         });
-
+                    */
                     column.Item().Row(row =>
                     {
                         // HELLO         Start Date - End Date
-                        row.RelativeItem().Text("HELLO");
+                        row.RelativeItem().Text($"{job.Company}");
                         row.RelativeItem().AlignRight().Text($"{job.StartDate} - {job.EndDate}");
                     });
 
@@ -184,6 +191,7 @@ public class Component_Experience : IComponent
 
                 // Horizontal Line
                 column.Item().PaddingVertical(5).LineHorizontal(1).LineColor(Colors.Black);
+
             });
 
         });
@@ -241,7 +249,6 @@ public class Component_Projects : IComponent
 
     public void Compose(IContainer container)
     {
-        var titleStyle = TextStyle.Default.FontSize(16).SemiBold().FontColor(Colors.Black);
 
         container.Row(row =>
         {
@@ -250,7 +257,7 @@ public class Component_Projects : IComponent
                 column.Item().Text("PROJECTS").Style(Style.SectionStyle);
                 foreach (KeyValuePair<string, string> kvp in Projects)
                 {
-                    column.Item().Text($"{kvp.Key}").Bold();
+                    column.Item().Text($"{kvp.Key}").Style(Style.SubsectionStyle);
                     column.Item().Text($"{kvp.Value}");
                 }
 
@@ -275,4 +282,13 @@ public static class Style
 {
     public static TextStyle TitleStyle = TextStyle.Default.FontSize(16).SemiBold().FontColor(Colors.Black);
     public static TextStyle SectionStyle = TextStyle.Default.FontSize(12).SemiBold().FontColor(Colors.Black);
+    public static TextStyle SubsectionStyle = TextStyle.Default.FontSize(11).SemiBold().FontColor(Colors.Black);
+}
+
+public static class Line
+{
+    public static void make_horizontal_line_break(ColumnDescriptor column, string color=Colors.Black)
+    {
+        column.Item().PaddingVertical(5).LineHorizontal(1).LineColor(color);
+    }
 }

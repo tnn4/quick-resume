@@ -42,7 +42,7 @@ public partial class ResumeDoc : IDocument
             .Page(page =>
             {
                 page.Margin(20);
-                page.Header().Element(compose_contact);
+                // page.Header().Element(compose_contact);
                 page.Content().Element(compose_content);
                 
             });
@@ -52,6 +52,9 @@ public partial class ResumeDoc : IDocument
     {
         container.Column(column =>
         {
+            // CONTACT
+            ContactColumn(column);
+            
             // EDUCATION
 
             EducationColumn(column);
@@ -64,8 +67,8 @@ public partial class ResumeDoc : IDocument
                 {
                     new Job
                     {
-                        Company = "company",
-                        Role = "role",
+                        Company = "The Cleaning Shop",
+                        Role = "janitor",
                         StartDate = "May 1000",
                         EndDate = "May 2000",
                         Tasks = new List<string>
@@ -75,8 +78,8 @@ public partial class ResumeDoc : IDocument
                     },
                     new Job
                     {
-                        Company = "company",
-                        Role = "role",
+                        Company = "Fairways Aerospace",
+                        Role = "aerospace engineer",
                         StartDate = "May 1000",
                         EndDate = "May 2000",
                         Tasks = new List<string>
@@ -90,10 +93,25 @@ public partial class ResumeDoc : IDocument
             // SKills
             SkillsColumn(column);
             // Projects
+            ProjectsColumn(column);
         });
     }
 
     #region component_functions
+    public void ContactColumn(ColumnDescriptor column)
+    {
+        column.Item().Row(row =>
+        {
+            row.RelativeItem().Component(new Component_Contact
+            {
+                Name = "Steve Jobsfinder",
+                Email = "sjobsfinder@crapple.com",
+                Phone = "123-456-7890",
+                Linkedin = new Uri("https://linkedin.com/in/steve-jobsfinder"),
+                Github = new Uri("https://github.com/sjobsfinder")
+            });
+        });
+    }
 
     public void EducationColumn(ColumnDescriptor column)
     {
@@ -164,7 +182,14 @@ public partial class ResumeDoc : IDocument
 
     public void ProjectsColumn(ColumnDescriptor column)
     {
-
+        column.Item().Row(row =>
+        {
+            row.RelativeItem().Component(new Component_Projects(new Dictionary<string, string>
+            {
+                { "project 1", "project description" },
+                { "project 2", "project description" }
+            }));
+        });
     }
     #endregion
 
