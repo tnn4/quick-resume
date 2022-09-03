@@ -1,11 +1,10 @@
 ﻿using QuestPDF.Drawing;
 using QuestPDF.Infrastructure;
-using QuestPDF.Helpers;
 using QuestPDF.Fluent;
 using IContainer = QuestPDF.Infrastructure.IContainer;
 using IComponent = QuestPDF.Infrastructure.IComponent;
 
-namespace pdf_test1.Resume;
+namespace qpdf.Resume;
 
 public partial class ResumeExample : IDocument
 {
@@ -22,10 +21,7 @@ public partial class ResumeExample : IDocument
     {
         compose_resume_example(container);
     }
-}
 
-public partial class ResumeExample : IDocument
-{
     public Component_Contact Contact { get; set; }
     public Component_Education Education { get; set; }
     public Component_Experience Experience { get; set; }
@@ -135,7 +131,8 @@ public partial class ResumeExample : IDocument
         });
     }
 
-    #region component_functions
+
+    #region example_component_functions
 
     public void CreateColumn(ColumnDescriptor column, IComponent component)
     {
@@ -244,7 +241,7 @@ public partial class ResumeExample : IDocument
 }
 #endregion
 
-public class ResumeComponentsExample
+public class Resumes : IDocument
 {
     public Component_Contact Contact { get; set; }
     public Component_Education Education { get; set; }
@@ -252,16 +249,39 @@ public class ResumeComponentsExample
     public Component_Skill Skills { get; set; }
     public Component_Projects Projects { get; set; }
 
-    public ResumeComponentsExample()
+    public Resumes()
     {
-        Contact = new Component_Contact
+
+    }
+    
+    public Resumes(Component_Contact contact, Component_Education education, Component_Experience experience, Component_Skill skills, Component_Projects projects)
+    {
+        Contact = contact;
+        Education = education;
+        Experience = experience;
+        Skills = skills;
+        Projects = projects;
+    }
+
+    public DocumentMetadata GetMetadata() => DocumentMetadata.Default;
+
+    public void Compose(IDocumentContainer container)
+    {
+        // Compose logic here
+    }
+
+    public static Resumes GenerateExample()
+    {
+        return new Resumes()
         {
-            Name = "Steve Jobsfinder",
-            Email = "sjobsfinder@crapple.com",
-            Phone = "123-456-7890",
-            Linkedin = new Uri("https://linkedin.com/in/steve-jobsfinder"),
-            Github = new Uri("https://github.com/sjobsfinder")
-        };
+            Contact = new Component_Contact
+            {
+                Name = "Steve Jobsfinder",
+                Email = "sjobsfinder@crapple.com",
+                Phone = "123-456-7890",
+                Linkedin = new Uri("https://linkedin.com/in/steve-jobsfinder"),
+                Github = new Uri("https://github.com/sjobsfinder")
+            },
 
         Education = new Component_Education(new List<School>
         {
@@ -277,7 +297,7 @@ public class ResumeComponentsExample
                         Degree = "MBA",
                         GraduationDate = "May 1972"
                     }
-        });
+        }),
 
         Experience = new Component_Experience(new List<Job>
         {
@@ -289,7 +309,7 @@ public class ResumeComponentsExample
                         EndDate = "Sep 1985",
                         Tasks = new List<string>
                         {
-                            "Founded an electronics startup in a garage ", 
+                            "Founded an electronics startup in a garage ",
                             "Designed the overpriced electronics for the masses",
                         }
                     },
@@ -301,17 +321,17 @@ public class ResumeComponentsExample
                         EndDate = "May 2006",
                         Tasks = new List<string>
                         {
-                            "made janky 3d animated films using computer graphics after getting kicked out at Crapple", 
+                            "made janky 3d animated films using computer graphics after getting kicked out at Crapple",
                         }
                     }
-        });
+        }),
 
         Skills = new Component_Skill(new Dictionary<string, string>
         {
                 { "Design", "UX , UI, Ucry" },
                 { "Management", "yelling, micro-management, cutting budgets" },
-                
-        });
+
+        }),
 
         Projects = new Component_Projects(new Dictionary<string, string>
         {
@@ -319,6 +339,7 @@ public class ResumeComponentsExample
             {"Crapple cryPod", "Designed an overpriced music player that actually doesn't really work that well" },
             {"Crapple cryPhone", "Lead designer on an overpriced touch screen smartphone that will make your wallet bleed and bring you to tears" },
             {"Crapple cryPad", "Lead designer of a tablet that's actually an overpriced brick" }
-        });
+        })
+    };
     }
 }

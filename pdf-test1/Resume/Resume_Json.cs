@@ -2,14 +2,14 @@
 using QuestPDF.Infrastructure;
 using System.Text.Json;
 
-namespace pdf_test1.Resume;
+namespace qpdf.Resume;
 
 internal class Resume_Json
 {
     public void component_to_json(IComponent component)
     {
         //  component object -->[serialize] --> JSON --> [PDF]
-        Json.JsonifyObject(component);
+        Json.ToJson(component);
     }
 
     public void json_to_component()

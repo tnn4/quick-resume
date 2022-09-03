@@ -1,4 +1,4 @@
-﻿namespace pdf_test1.Resume;
+﻿namespace qpdf.Resume;
 
 internal class Resume_Model
 {

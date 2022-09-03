@@ -7,7 +7,7 @@ using IComponent = QuestPDF.Infrastructure.IComponent;
 
 using System.ComponentModel;
 
-using pdf_test1.Resume;
+using qpdf.Resume;
 
 namespace pdf_test1;
 

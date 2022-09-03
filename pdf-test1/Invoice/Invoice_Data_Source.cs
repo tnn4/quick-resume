@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 using QuestPDF.Helpers;
 
-namespace pdf_test1.Invoice;
+namespace qpdf.Invoice;
 
 internal class Invoice_Data_Source
 {

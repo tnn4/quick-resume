@@ -1,12 +1,5 @@
-﻿using QuestPDF.Fluent;
-using QuestPDF.Helpers;
-using QuestPDF.Infrastructure;
-using QuestPDF.Previewer;
-
-using pdf_test1;
-
-using pdf_test1.Invoice;
-using pdf_test1.Resume;
+﻿
+using qpdf.Test;
 
 public class EntryPoint
 {
@@ -16,6 +9,3 @@ public class EntryPoint
         TestJson.Serialize_Components();
     }
 }
-
-
-

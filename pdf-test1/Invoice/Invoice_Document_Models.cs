@@ -5,7 +5,7 @@ using System.Net.Sockets;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace pdf_test1.Invoice;
+namespace qpdf.Invoice;
 
 internal class Invoice_Document_Models
 {

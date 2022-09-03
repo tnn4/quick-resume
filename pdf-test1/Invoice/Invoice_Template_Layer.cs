@@ -9,9 +9,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Runtime.CompilerServices;
-using pdf_test1.Invoice;
+using qpdf.Invoice;
 
-namespace pdf_test1;
+namespace qpdf;
 
 internal class Invoice_Template_Layer
 {

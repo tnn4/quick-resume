@@ -1,6 +1,6 @@
 ﻿using QuestPDF.Helpers;
 
-namespace pdf_test1.Resume;
+namespace qpdf.Resume;
 
 internal class Resume_Data_Source
 {

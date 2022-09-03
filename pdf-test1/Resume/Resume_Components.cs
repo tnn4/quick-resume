@@ -3,7 +3,7 @@ using QuestPDF.Elements;
 using QuestPDF.Helpers;
 using QuestPDF.Fluent;
 
-namespace pdf_test1.Resume;
+namespace qpdf.Resume;
 
 internal class Resume_Components
 {
@@ -26,9 +26,7 @@ public class Component_Section : IComponent
 
 #region Contact
 
-/// <summary>
-/// component objects
-/// </summary>
+
 public class Component_Contact : IComponent
 {
     public string Name { get; set; }
@@ -291,7 +289,7 @@ public static class Style
 
 public static class Line
 {
-    public static void make_horizontal_line_break(ColumnDescriptor column, string color=Colors.Black)
+    public static void LineHorizontal(ColumnDescriptor column, string color=Colors.Black)
     {
         column.Item().PaddingVertical(5).LineHorizontal(1).LineColor(color);
     }

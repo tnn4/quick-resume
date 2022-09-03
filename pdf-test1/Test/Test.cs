@@ -1,10 +1,10 @@
-﻿using pdf_test1.Invoice;
-using pdf_test1.Resume;
+﻿using qpdf;
+using qpdf.Invoice;
+using qpdf.Resume;
 using QuestPDF.Fluent;
 using QuestPDF.Previewer;
 
-
-namespace pdf_test1;
+namespace qpdf.Test;
 
 using static TestFn;
 
@@ -64,19 +64,16 @@ public class TestDoc
 
 public class TestJson
 {
-    
-    
-    
     public static void Serialize_Components()
     {
-        var componentsExample = new ResumeComponentsExample();
-        Json.Write_To_Json_File(componentsExample, "componentsExample.json");
+        var componentsExample = Resumes.GenerateExample();
+        Json.ToJsonFile(componentsExample, "componentsExample.json");
     }
-    
+
     public static void Serialize_Experience()
     {
         var experiences = new List<Job>();
-        
+
 
         experiences.Add(new Job
         {
@@ -93,8 +90,8 @@ public class TestJson
         });
 
         Json.PrintSerializedObject(experiences);
-        
-        Json.Write_To_Json_File(experiences, "experience.json" );
+
+        Json.ToJsonFile(experiences, "experience.json");
     }
 
     public static void Serialize_Experiences()
@@ -136,7 +133,7 @@ public class TestJson
             }
         };
 
-        Json.Write_To_Json_File(experiences, "experiences.json");
+        Json.ToJsonFile(experiences, "experiences.json");
     }
 
 
