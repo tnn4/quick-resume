@@ -1,17 +1,14 @@
-﻿using qpdf;
+﻿using QuestPDF.Fluent;
+using QuestPDF.Previewer;
+
 using qpdf.Invoice;
 using qpdf.Resume;
-using QuestPDF.Fluent;
-using QuestPDF.Previewer;
+using qpdf.Json;
 
 namespace qpdf.Test;
 
 using static TestFn;
 
-internal class Test
-{
-
-}
 
 public class TestFn
 {
@@ -67,7 +64,7 @@ public class TestJson
     public static void Serialize_Components()
     {
         var componentsExample = Resumes.GenerateExample();
-        Json.ToJsonFile(componentsExample, "componentsExample.json");
+        Jsons.ToJsonFile(componentsExample, "componentsExample.json");
     }
 
     public static void Serialize_Experience()
@@ -89,51 +86,9 @@ public class TestJson
                 }
         });
 
-        Json.PrintSerializedObject(experiences);
+        Jsons.PrintJsonObject(experiences);
 
-        Json.ToJsonFile(experiences, "experience.json");
-    }
-
-    public static void Serialize_Experiences()
-    {
-        var experiences = new Experiences
-        {
-            Jobs = new List<Job>
-            {
-                new Job
-                {
-                    Company = "company",
-                    Role = "role",
-                    // StartDate = new DateTime(2000, 12, 30),
-                    // EndDate = new DateTime(2001, 1, 1),
-                    StartDate = "Dec 2000",
-                    EndDate = "Jan 2001",
-                    Tasks = new List<string>
-                    {
-                        "task1",
-                        "task2",
-                        "task3"
-                    }
-                },
-                new Job
-                {
-                    Company = "company2",
-                    Role = "role2",
-                    // StartDate = new DateTime(2001, 12, 30),
-                    // EndDate = new DateTime(2002, 1, 1),
-                    StartDate = "Dec 2000",
-                    EndDate = "Jan 2001",
-                    Tasks = new List<string>
-                    {
-                        "task1.2",
-                        "task2.2",
-                        "task3.2"
-                    }
-                }
-            }
-        };
-
-        Json.ToJsonFile(experiences, "experiences.json");
+        Jsons.ToJsonFile(experiences, "experience.json");
     }
 
 

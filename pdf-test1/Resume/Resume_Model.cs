@@ -12,7 +12,7 @@ public static class Constants
 // DOCUMENT MODEL
 public class ResumeModel
 {
-    public ContactInformation Contact { get; set; }
+    public Contact Contact { get; set; }
     public List<School> _Education { get; set; }
     public List<Job> _Experiences { get; set; }
     public List<Skill> _Skills { get; set; }
@@ -28,7 +28,7 @@ public class Resume_Section<T>
 }
 
 // CONTACT
-public class ContactInformation
+public class Contact
 {
     public string Name { get; set; }
     public string Email { get; set; }
@@ -44,14 +44,6 @@ public class School
     public string Name { get; set; }
     public string Degree { get; set; }
     public string GraduationDate { get; set; }
-}
-
-public class Experiences
-{
-    public string label {
-        get { return "experience";}
-    }
-    public List<Job>? Jobs { get; set; }
 }
 
 // EXPERIENCE

@@ -12,13 +12,23 @@ internal class Resume_Components
 #region 
 public class Component_Section : IComponent
 {
-    public string Section { get; set; }
+    public string SectionName { get; set; }
+    public IComponent Component { get; set; }
 
     public void Compose(IContainer container)
     {
+        PrintTitle(container);
+    }
+
+    public void PrintTitle(IContainer container)
+    {
         container.Row(row =>
         {
-            row.RelativeItem().Text($"{Section}");
+            row.RelativeItem().Text($"{SectionName}");
+            row.RelativeItem().Column(column =>
+            {
+                column.Item().Text($"{SectionName}");
+            });
         });
     }
 }

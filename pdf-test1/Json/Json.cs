@@ -1,9 +1,9 @@
 ﻿using System.Text.Json;
 using System.Diagnostics;
 
-namespace qpdf;
+namespace qpdf.Json;
 
-public class Json
+public class Jsons
 {
     public static string ToJson(object obj)
     {
@@ -15,16 +15,16 @@ public class Json
         return JsonSerializer.Deserialize<object>(json);
     }
 
-    public static void PrintSerializedObject(object obj)
+    public static void PrintJsonObject(object obj)
     {
         Console.WriteLine(ToJson(obj));
         Debug.WriteLine(ToJson(obj));
     }
 
-    public static void ToJsonFile(object obj, string filePath )
+    public static void ToJsonFile(object obj, string filePath)
     {
         var path = filePath;
-        var jsonString = Json.ToJson(obj);
+        var jsonString = ToJson(obj);
         File.WriteAllText(path, jsonString);
     }
 }
