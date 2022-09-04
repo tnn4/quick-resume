@@ -10,23 +10,16 @@ public partial class ResumeExample : IDocument
 {
     public ResumeModel Model { get; }
 
-    public ResumeExample(ResumeModel model)
-    {
-        Model = model;
-    }
-
-    public DocumentMetadata GetMetadata() => DocumentMetadata.Default;
-
-    public void Compose(IDocumentContainer container)
-    {
-        compose_resume_example(container);
-    }
-
     public Component_Contact Contact { get; set; }
     public Component_Education Education { get; set; }
     public Component_Experience Experience { get; set; }
     public Component_Skill Skills { get; set; }
     public Component_Projects Projects { get; set; }
+
+    public ResumeExample(ResumeModel model)
+    {
+        Model = model;
+    }
 
     public ResumeExample()
     {
@@ -98,6 +91,13 @@ public partial class ResumeExample : IDocument
         });
     }
 
+    public DocumentMetadata GetMetadata() => DocumentMetadata.Default;
+
+    public void Compose(IDocumentContainer container)
+    {
+        compose_resume_example(container);
+    }
+
     public void compose_resume_example(IDocumentContainer container)
     {
         container
@@ -109,7 +109,6 @@ public partial class ResumeExample : IDocument
                 // page.Footer().Element();
             });
     }
-
 
     // Compose Components
     public void compose_components_example(IContainer container)
@@ -124,8 +123,10 @@ public partial class ResumeExample : IDocument
 
             // EXPERIENCE
             ExperienceColumnExample(column);
+            
             // SKILLS
             SkillsColumnExample(column);
+            
             // PROJECTS
             ProjectsColumnExample(column);
         });
@@ -316,7 +317,7 @@ public class Resumes : IDocument
                     new Job
                     {
                         Company = "Flixar",
-                        Role = "Founder/CEO",
+                        Role = "Owner",
                         StartDate = "May 1986",
                         EndDate = "May 2006",
                         Tasks = new List<string>

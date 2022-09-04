@@ -5,15 +5,9 @@ using QuestPDF.Fluent;
 using IContainer = QuestPDF.Infrastructure.IContainer;
 using IComponent = QuestPDF.Infrastructure.IComponent;
 
-using System.ComponentModel;
-
 using qpdf.Resume;
 
 namespace pdf_test1;
-
-internal class Resume_Template
-{
-}
 
 public partial class ResumeDoc : IDocument
 {

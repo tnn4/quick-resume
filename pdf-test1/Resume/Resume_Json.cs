@@ -18,4 +18,12 @@ internal class Resume_Json
     {
         //  JSON -->[deserialize] --> component object --> [PDF]
     }
+
+    public static void SerializeToFile(object obj, string path)
+    {
+        if (obj is not null && path is not null)
+            Jsons.ToJsonFile(obj, path);
+        else
+            Console.WriteLine("Error: Missing valid obj or path");
+    }
 }

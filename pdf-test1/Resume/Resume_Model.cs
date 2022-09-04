@@ -1,8 +1,5 @@
 ﻿namespace qpdf.Resume;
 
-internal class Resume_Model
-{
-}
 // CONSTANTS
 public static class Constants
 {
@@ -61,12 +58,12 @@ public class Job
 public class Skill
 {
     public string SkillGroup { get; set; }
-    public string SubSkill { get; set; }
+    public string Subskill { get; set; }
 }
 
 // PROJECT
 public class Project
 {
-    public string ProjectName { get; set; }
+    public string Name { get; set; }
     public string Description { get; set; }
 }

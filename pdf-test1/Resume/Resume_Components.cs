@@ -5,16 +5,16 @@ using QuestPDF.Fluent;
 
 namespace qpdf.Resume;
 
-internal class Resume_Components
-{
-}
-
 #region 
 public class Component_Section : IComponent
 {
+    // Data
     public string SectionName { get; set; }
     public IComponent Component { get; set; }
 
+    // Constructors
+
+    // Methods
     public void Compose(IContainer container)
     {
         PrintTitle(container);
@@ -35,8 +35,6 @@ public class Component_Section : IComponent
 #endregion
 
 #region Contact
-
-
 public class Component_Contact : IComponent
 {
     public string Name { get; set; }
@@ -253,12 +251,16 @@ public class Component_Skill : IComponent
 #region Projects
 public class Component_Projects : IComponent
 {
+    // Data
     public Dictionary<string,string> Projects { get; set; }
+    
+    // Constructors
     public Component_Projects(Dictionary<String, String> projects)
     {
         Projects = projects;
     }
 
+    // Methods
     public void Compose(IContainer container)
     {
 

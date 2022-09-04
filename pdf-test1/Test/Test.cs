@@ -21,14 +21,14 @@ public class TestFn
 public class TestDoc
 {
 
-    public static void create_resume_example()
+    public static void preview_resume_example()
     {
         var filePath = "resume.example1.pdf";
         var model = Resume_Data_Source.generateResumeExample();
-        // var resume_doc = new ResumeDoc(model);
-        var resume_doc = new ResumeExample(model);
-        resume_doc.GeneratePdf(filePath);
-        resume_doc.ShowInPreviewer();
+
+        var rDoc = new ResumeExample();
+        rDoc.GeneratePdf(filePath);
+        rDoc.ShowInPreviewer();
     }
 
     public static void create_invoice_doc()
@@ -45,7 +45,7 @@ public class TestDoc
         {
             container
             .Page(page => test()) // Page takes Action which is a delegate
-            .Page(page => { test(); test(); })
+            .Page(page => { test(); test(); }) // The body of an expression lambda can consist of a method call.
             .Page(page =>
             {
                 test();
@@ -65,6 +65,14 @@ public class TestJson
     {
         var componentsExample = Resumes.GenerateExample();
         Jsons.ToJsonFile(componentsExample, "componentsExample.json");
+    }
+
+    public static void SerializeToFile(object obj, string path)
+    {
+        if (obj is not null && path is not null)
+            Jsons.ToJsonFile(obj, path);
+        else
+            Console.WriteLine("Error: Missing valid obj or path");
     }
 
     public static void Serialize_Experience()
