@@ -5,7 +5,7 @@ using IContainer = QuestPDF.Infrastructure.IContainer;
 using IComponent = QuestPDF.Infrastructure.IComponent;
 
 namespace qpdf.Resume;
-#endregion
+
 
 public class ResumeM : IDocument
 {
@@ -103,12 +103,28 @@ public class ResumeM : IDocument
                     }
         }),
 
-        Skills = new Component_Skill(new Dictionary<string, string>
-        {
-                { "Design", "UX , UI, Ucry" },
-                { "Management", "yelling, micro-management, cutting budgets" },
+            /*
+            Skills = new Component_Skill(new Dictionary<string, string>
+            {
+                    { "Design", "UX , UI, Ucry" },
+                    { "Management", "yelling, micro-management, cutting budgets" },
 
-        }),
+            }),
+            */
+
+            Skills = new Component_Skill(new List<Skill>
+            {
+                new Skill
+                {
+                    SkillGroup = "Languages",
+                    SkillSub = "English, French"
+                },
+                new Skill
+                {
+                    SkillGroup = "Programming Languages",
+                    SkillSub = "C/C++, Python, C#, Java"
+                }
+            }),
 
         Projects = new Component_Projects(new Dictionary<string, string>
         {

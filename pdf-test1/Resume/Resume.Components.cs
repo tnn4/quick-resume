@@ -300,13 +300,13 @@ public class Component_Projects : IComponent
             {
                 column.Item().Text("PROJECTS").Style(Style.SectionStyle);
                 
-                /*
-                foreach (KeyValuePair<string, string> kvp in Projects)
+                
+                foreach (KeyValuePair<string, string> kvp in ProjectsDict)
                 {
                     column.Item().Text($"{kvp.Key}").Style(Style.SubsectionStyle);
                     column.Item().Text($"{kvp.Value}");
                 }
-                */
+                
                 // Horizontal Line
                 column.Item().PaddingVertical(5).LineHorizontal(1).LineColor(Colors.Black);
             });

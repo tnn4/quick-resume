@@ -19,7 +19,7 @@ internal class Previewer
     public void GeneratePreviewAndFile(string path)
     {
         var filePath = path;
-        var rDoc = new Resumes();
+        var rDoc = new ResumeM();
         rDoc.GeneratePdf(filePath);
         rDoc.ShowInPreviewer();
     }

@@ -31,18 +31,24 @@ list = [4, 5, 6]";
 
     }
 
-    public static void TomletTestExample(string path)
+    public static void TomletToConsole(string path)
     {
         string testTomlString = File.ReadAllText(path);
         Console.WriteLine(testTomlString);
 
+
+    }
+
+    public static void TomletToTomlFile(object obj, string path)
+    {
         // parse one section and return the section
         // use that section inside
-        var re = new ResumeExample();
-        TomlDocument tomlDoc = TomletMain.DocumentFrom(re);
-        string tomlString = TomletMain.TomlStringFrom(re);
+        
+        TomlDocument tomlDoc = TomletMain.DocumentFrom(obj);
+        string tomlString = TomletMain.TomlStringFrom(obj);
         Console.WriteLine(tomlString);
-        File.WriteAllText("examples/output.ResumeExample.toml", tomlString);
+        File.WriteAllText("examples/"+path, tomlString);
+        Console.WriteLine("press key to continue");
         Console.ReadLine();
     }
 

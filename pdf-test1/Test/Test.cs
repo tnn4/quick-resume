@@ -24,7 +24,7 @@ public class TestJson
 {
     public static void Serialize_Components()
     {
-        var componentsExample = Resumes.GenerateExample();
+        var componentsExample = ResumeM.GenerateExample();
         Jsons.ToJsonFile(componentsExample, "componentsExample.json");
     }
 

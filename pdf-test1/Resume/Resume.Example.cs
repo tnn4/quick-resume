@@ -256,8 +256,8 @@ public partial class ResumeExample : IDocument
             {
                 new Skill
                 {
-                    SkillGroup = "",
-                    SkillSub = ""
+                    SkillGroup = "Programming Languages",
+                    SkillSub = "C/C++, Python, C#, Java"
                 },
                 new Skill
                 {
