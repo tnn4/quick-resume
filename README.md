@@ -1,4 +1,4 @@
-Repo for creating Resume template using QuestPDF
+Repo for creating quick cleanly formatted resumes using a consistent template engine. 
 
 This app is for anyone who wants to edit a simple text file to produce a cleanly formatted PDF, if using a word processor causes formatting issues.
 
