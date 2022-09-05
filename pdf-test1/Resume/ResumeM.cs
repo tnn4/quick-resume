@@ -10,11 +10,11 @@ namespace qpdf.Resume;
 
 public class ResumeM : IDocument
 {
-    public Component_Contact Contact { get; set; }
-    public Component_Education Education { get; set; }
-    public Component_Experience Experience { get; set; }
-    public Component_Skill Skills { get; set; }
-    public Component_Projects Projects { get; set; }
+    public Component_Contact? Contact { get; set; }
+    public Component_Education? Education { get; set; }
+    public Component_Experience? Experience { get; set; }
+    public Component_Skill? Skills { get; set; }
+    public Component_Projects? Projects { get; set; }
 
     public ResumeM()
     {
@@ -42,6 +42,7 @@ public class ResumeM : IDocument
     public void Compose(IDocumentContainer container)
     {
         // Compose logic here
+        composeResume(container);
     }
 
     public void composeResume(IDocumentContainer container)
@@ -68,13 +69,13 @@ public class ResumeM : IDocument
             EducationColumn(column);
 
             // EXPERIENCE
-            ExperienceColumn(column);
+            //ExperienceColumn(column);
 
             // SKILLS
-            SkillsColumn(column);
+            //SkillsColumn(column);
 
             // PROJECTS
-            ProjectsColumn(column);
+            //ProjectsColumn(column);
         });
     }
 
@@ -82,7 +83,8 @@ public class ResumeM : IDocument
     {
         column.Item().Row(row =>
         {
-            row.RelativeItem().Component(Contact);
+            if (Contact is not null)
+                row.RelativeItem().Component(Contact);
         });
     }
 
@@ -90,7 +92,8 @@ public class ResumeM : IDocument
     {
         column.Item().Row(row =>
         {
-            row.RelativeItem().Component(Education);
+            if (Education is not null)
+                row.RelativeItem().Component(Education);
         });
     }
 
@@ -98,7 +101,8 @@ public class ResumeM : IDocument
     {
         column.Item().Row(row =>
         {
-            row.RelativeItem().Component(Experience);
+            if (Experience is not null)
+                row.RelativeItem().Component(Experience);
         });
     }
 
@@ -106,7 +110,8 @@ public class ResumeM : IDocument
     {
         column.Item().Row(row =>
         {
-            row.RelativeItem().Component(Skills);
+            if (Skills is not null)
+                row.RelativeItem().Component(Skills);
         });
     }
 
@@ -114,7 +119,8 @@ public class ResumeM : IDocument
     {
         column.Item().Row(row =>
         {
-            row.RelativeItem().Component(Projects);
+            if (Projects is not null)
+                row.RelativeItem().Component(Projects);
         });
     }
 

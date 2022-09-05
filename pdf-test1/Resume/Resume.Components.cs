@@ -39,10 +39,10 @@ public class Component_Section : IComponent
 #region Contact
 public class Component_Contact : IComponent
 {
-    public string Name { get; set; }
-    public string Email { get; set; }
-    public string Phone { get; set; }
-    public Dictionary<string, string> Links { get; set; }
+    public string? Name { get; set; }
+    public string? Email { get; set; }
+    public string? Phone { get; set; }
+    public Dictionary<string, string>? Links { get; set; }
 
     // Constructors
     public Component_Contact()
@@ -87,10 +87,14 @@ public class Component_Contact : IComponent
                 if (Github is not null)
                     column.Item().Text($"{Github}");
                 */
-                foreach (KeyValuePair<string, string> kvp in Links)
+                if (Links is not null)
                 {
-                    column.Item().Text($"{kvp.Key}: {kvp.Value} ");
+                    foreach (KeyValuePair<string, string> kvp in Links)
+                    {
+                        column.Item().Text($"{kvp.Key}: {kvp.Value} ");
+                    }
                 }
+
                 // Horizontal Line
                 column.Item().PaddingVertical(5).LineHorizontal(1).LineColor(Colors.Black);
             });
@@ -104,7 +108,7 @@ public class Component_Contact : IComponent
 public class Component_Education : IComponent
 {
     // Data
-    public List<School> Education { get; set; }
+    public List<School>? Education { get; set; }
 
     // Constructors
     public Component_Education()
@@ -128,20 +132,24 @@ public class Component_Education : IComponent
                 {
                     column.Item().Text("EDUCATION").Style(Style.SectionStyle);
 
-                    foreach (School edu in Education)
+                    if (Education is not null)
                     {
-                        // column.Item().Text($"{edu.Name}");
-                        // Row relative item | relative item |
-                        column.Item().Row(row =>
+                        foreach (School edu in Education)
                         {
-                            row.RelativeItem().Text($"{edu.Name}");
-                            row.RelativeItem().AlignRight().Text($"{edu.GraduationDate}");
-                        });
-                        // column item
-                        // column item
-                        column.Item().Text($"{edu.Degree}").Italic();
-                        // column.Item().Text($"{edu.GraduationDate}");
+                            // column.Item().Text($"{edu.Name}");
+                            // Row relative item | relative item |
+                            column.Item().Row(row =>
+                            {
+                                row.RelativeItem().Text($"{edu.Name}");
+                                row.RelativeItem().AlignRight().Text($"{edu.GraduationDate}");
+                            });
+                            // column item
+                            // column item
+                            column.Item().Text($"{edu.Degree}").Italic();
+                            // column.Item().Text($"{edu.GraduationDate}");
+                        }
                     }
+
 
                     // Horizontal Line
                     column.Item().PaddingVertical(5).LineHorizontal(1).LineColor(Colors.Black);
@@ -161,7 +169,7 @@ public class Component_Education : IComponent
 public class Component_Experience : IComponent
 {
     // Data
-    public List<Job> Jobs { get; set; }
+    public List<Job>? Jobs { get; set; }
 
     // Constructors
     public Component_Experience()
@@ -186,32 +194,28 @@ public class Component_Experience : IComponent
 
                 column.Item().Text("EXPERIENCE").Style(Style.SectionStyle);
 
-
-                foreach (Job job in Jobs)
+                if (Jobs is not null)
                 {
-                    /*
-                    //.Text($"{job.Company}" + Constants.LONG_SPACE + job.StartDate.ToString("MMM yyyy") + "-" + job.EndDate.ToString("MMM yyyy"));
-                    //.Text($"{job.Company} {job.StartDate} - {job.EndDate}");
-                        .Text(text =>
-                        {
-                            text.Span($"{job.Company}");
-                        });
-                    */
-                    column.Item().Row(row =>
+                    foreach (Job job in Jobs)
                     {
-                        // HELLO         Start Date - End Date
-                        row.RelativeItem().Text($"{job.Company}");
-                        row.RelativeItem().AlignRight().Text($"{job.StartDate} - {job.EndDate}");
-                    });
 
-                    column.Item().Text($"{job.Role}").Italic();
-                    
-                    foreach (string task in job.Tasks)
-                    {
-                        // remove ScaleToFit()
-                        column.Item().ScaleToFit().Text($"> {task}");
+                        column.Item().Row(row =>
+                        {
+                            // HELLO         Start Date - End Date
+                            row.RelativeItem().Text($"{job.Company}");
+                            row.RelativeItem().AlignRight().Text($"{job.StartDate} - {job.EndDate}");
+                        });
+
+                        column.Item().Text($"{job.Role}").Italic();
+
+                        foreach (string task in job.Tasks)
+                        {
+                            // remove ScaleToFit()
+                            column.Item().ScaleToFit().Text($"> {task}");
+                        }
                     }
                 }
+
 
                 // Horizontal Line
                 column.Item().PaddingVertical(5).LineHorizontal(1).LineColor(Colors.Black);
@@ -228,9 +232,9 @@ public class Component_Experience : IComponent
 public class Component_Skill : IComponent
 {
     // Data
-    public List<Skill> Skills { get; set; }
+    public List<Skill>? Skills { get; set; }
 
-    public Dictionary<String, String> SkillsDict { get; set; }
+    // public Dictionary<String, String>? SkillsDict { get; set; }
 
     // Constructors
     public Component_Skill()
@@ -243,12 +247,12 @@ public class Component_Skill : IComponent
         Skills = skills;
     }
     
-    
+    /*
     public Component_Skill(Dictionary<String, String> skills)
     {
         SkillsDict = skills;
     }
-
+    */
     // Printed in PDF
     public void Compose(IContainer container)
     {
@@ -270,14 +274,18 @@ public class Component_Skill : IComponent
                     });
                 }
                 */
-                foreach (Skill skill in Skills)
+                if (Skills is not null)
                 {
-                    column.Item().Text(text =>
+                    foreach (Skill skill in Skills)
                     {
-                        text.Span($"{skill.MajorSkill} : ");
-                        text.Span($"{skill.SubSkill}");
-                    });
+                        column.Item().Text(text =>
+                        {
+                            text.Span($"{skill.MajorSkill} : ");
+                            text.Span($"{skill.SubSkill}");
+                        });
+                    }
                 }
+
                 // Horizontal Line
                 column.Item().PaddingVertical(5).LineHorizontal(1).LineColor(Colors.Black);
             });
@@ -291,20 +299,20 @@ public class Component_Skill : IComponent
 public class Component_Projects : IComponent
 {
     // Data
-    public List<Project> Projects { get; set; }
-    public Dictionary<string,string> ProjectsDict { get; set; }
+    // public List<Project>? Projects { get; set; }
+    public Dictionary<string,string>? ProjectsDict { get; set; }
     
     // Constructors
     public Component_Projects()
     {
 
     }
-    
+    /*
     public Component_Projects(List<Project> projects)
     {
         Projects = projects;
     }
-
+    */
     public Component_Projects(Dictionary<String, String> projects)
     {
         ProjectsDict= projects;
@@ -321,11 +329,15 @@ public class Component_Projects : IComponent
                 column.Item().Text("PROJECTS").Style(Style.SectionStyle);
                 
                 
-                foreach (KeyValuePair<string, string> kvp in ProjectsDict)
+                if (ProjectsDict is not null)
                 {
-                    column.Item().Text($"{kvp.Key}").Style(Style.SubsectionStyle);
-                    column.Item().Text($"{kvp.Value}");
+                    foreach (KeyValuePair<string, string> kvp in ProjectsDict)
+                    {
+                        column.Item().Text($"{kvp.Key}").Style(Style.SubsectionStyle);
+                        column.Item().Text($"{kvp.Value}");
+                    }
                 }
+
                 
                 // Horizontal Line
                 column.Item().PaddingVertical(5).LineHorizontal(1).LineColor(Colors.Black);

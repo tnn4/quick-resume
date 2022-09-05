@@ -57,13 +57,17 @@ list = [4, 5, 6]";
     public static void TomletGeneratePdfFromToml(string pathIn, string pathOut)
     {
         TomlDocument tomlDoc = TomlParser.ParseFile(pathIn);
+        // toml -> obj
         var rM = TomletMain.To<ResumeM>(tomlDoc);
         string tomlString = TomletMain.TomlStringFrom(rM);
         
         Console.WriteLine("TOML OBJECT: ");
         Console.WriteLine(tomlString);
 
-        rM.GeneratePdf(pathOut);
+        TestJson.SerializeToFile(rM, "examples/rM.json");
+
+        if (rM is not null)       
+            rM.GeneratePdf(pathOut); //null reference exception
         rM.ShowInPreviewer();
         
         
