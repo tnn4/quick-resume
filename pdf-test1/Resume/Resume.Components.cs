@@ -202,7 +202,7 @@ public class Component_Experience : IComponent
                         column.Item().Row(row =>
                         {
                             // HELLO         Start Date - End Date
-                            row.RelativeItem().Text($"{job.Company}");
+                            row.RelativeItem().Text($"{job.Company}").Bold();
                             row.RelativeItem().AlignRight().Text($"{job.StartDate} - {job.EndDate}");
                         });
 
@@ -280,7 +280,7 @@ public class Component_Skill : IComponent
                     {
                         column.Item().Text(text =>
                         {
-                            text.Span($"{skill.MajorSkill} : ");
+                            text.Span($"{skill.MajorSkill} : ").Bold();
                             text.Span($"{skill.SubSkill}");
                         });
                     }

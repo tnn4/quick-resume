@@ -69,13 +69,13 @@ public class ResumeM : IDocument
             EducationColumn(column);
 
             // EXPERIENCE
-            //ExperienceColumn(column);
+            ExperienceColumn(column);
 
             // SKILLS
-            //SkillsColumn(column);
+            SkillsColumn(column);
 
             // PROJECTS
-            //ProjectsColumn(column);
+            ProjectsColumn(column);
         });
     }
 
