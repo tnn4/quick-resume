@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.3.32819.101
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "pdf-resume1", "pdf-test1\pdf-resume1.csproj", "{B9FB42A7-5614-40FB-93DE-72023AB3E3C5}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "quick-resume", "pdf-test1\quick-resume.csproj", "{B9FB42A7-5614-40FB-93DE-72023AB3E3C5}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Tomlet", "lib\Tomlet-3.1.3\Tomlet\Tomlet.csproj", "{C17A4558-B30C-493F-9612-3A6E70266A09}"
 EndProject

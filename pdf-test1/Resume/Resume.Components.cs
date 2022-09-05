@@ -140,7 +140,7 @@ public class Component_Education : IComponent
                             // Row relative item | relative item |
                             column.Item().Row(row =>
                             {
-                                row.RelativeItem().Text($"{edu.Name}");
+                                row.RelativeItem().Text($"{edu.Name}").Bold();
                                 row.RelativeItem().AlignRight().Text($"{edu.GraduationDate}");
                             });
                             // column item
