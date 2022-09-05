@@ -17,16 +17,19 @@ public class EntryPoint
         // resume.generatePreview();
 
         // resume.generatePDF();
-        TomlTest.TomletToConsole("examples/section.experience.eg.toml");
+        // TomlTest.TomletToConsole("examples/section.experience.eg.toml");
         
         
-        var re = new ResumeExample();
-        TomlTest.TomletToTomlFile(re, "output.ResumeExample.toml");
+        // var re = new ResumeExample();
+        // TomlTest.TomletToTomlFile(re, "output.ResumeExample.toml");
 
 
-        var rM = ResumeM.GenerateExample();
-        TomlTest.TomletToTomlFile(rM, "output.ResumeM.toml");
+        // var rM = ResumeM.GenerateExample();
+        // TomlTest.TomletToTomlFile(rM, "output.ResumeM.toml");
 
+        TomlTest.TomletGeneratePdfFromToml("examples/input.ResumeM.toml", "examples/output.ResumeM.pdf");
+
+        Console.WriteLine("Press key to exit...");
         Console.ReadLine();
     }
 }

@@ -57,16 +57,16 @@ public class Job
 // SKILL
 public class Skill
 {
-    public string SkillGroup { get; set; }
-    public string SkillSub{ get; set; }
+    public string MajorSkill { get; set; }
+    public string SubSkill { get; set; }
     public Dictionary<string, string> _Skills {get; set;}
 
     public Skill() { }
 
-    public Skill(string skillGroup, string subskill)
+    public Skill(string majorSkill, string subskill)
     {
-        SkillGroup = skillGroup;
-        SkillSub = subskill;
+        MajorSkill = majorSkill;
+        SubSkill = subskill;
     }
     public Skill(Dictionary<string, string> skills)
     {

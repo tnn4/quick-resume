@@ -94,13 +94,13 @@ public partial class ResumeExample : IDocument
         {
             new Skill
             {
-                SkillGroup = "",
-                SkillSub = ""
+                MajorSkill = "",
+                SubSkill = ""
             },
             new Skill
             {
-                SkillGroup = "",
-                SkillSub = ""
+                MajorSkill = "",
+                SubSkill = ""
             }
         });
         Projects = new Component_Projects(new Dictionary<string, string>
@@ -256,13 +256,13 @@ public partial class ResumeExample : IDocument
             {
                 new Skill
                 {
-                    SkillGroup = "Programming Languages",
-                    SkillSub = "C/C++, Python, C#, Java"
+                    MajorSkill = "Programming Languages",
+                    SubSkill = "C/C++, Python, C#, Java"
                 },
                 new Skill
                 {
-                    SkillGroup = "",
-                    SkillSub = ""
+                    MajorSkill = "",
+                    SubSkill = ""
                 }
             }));
         });

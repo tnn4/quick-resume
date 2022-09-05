@@ -1,4 +1,6 @@
 ﻿using qpdf.Resume;
+using QuestPDF.Fluent;
+using QuestPDF.Previewer;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -50,6 +52,21 @@ list = [4, 5, 6]";
         File.WriteAllText("examples/"+path, tomlString);
         Console.WriteLine("press key to continue");
         Console.ReadLine();
+    }
+
+    public static void TomletGeneratePdfFromToml(string pathIn, string pathOut)
+    {
+        TomlDocument tomlDoc = TomlParser.ParseFile(pathIn);
+        var rM = TomletMain.To<ResumeM>(tomlDoc);
+        string tomlString = TomletMain.TomlStringFrom(rM);
+        
+        Console.WriteLine("TOML OBJECT: ");
+        Console.WriteLine(tomlString);
+
+        rM.GeneratePdf(pathOut);
+        rM.ShowInPreviewer();
+        
+        
     }
 
     public static void CreateSectionExample()

@@ -3,6 +3,7 @@ using QuestPDF.Infrastructure;
 using QuestPDF.Fluent;
 using IContainer = QuestPDF.Infrastructure.IContainer;
 using IComponent = QuestPDF.Infrastructure.IComponent;
+using System.Data.Common;
 
 namespace qpdf.Resume;
 
@@ -41,6 +42,80 @@ public class ResumeM : IDocument
     public void Compose(IDocumentContainer container)
     {
         // Compose logic here
+    }
+
+    public void composeResume(IDocumentContainer container)
+    {
+        container
+            .Page(page =>
+            {
+                page.Margin(20);
+                // page.Header().Element(compose_contact);
+                page.Content().Element(ComposeComponents);
+                // page.Footer().Element();
+            });
+    }
+
+    // Compose Components
+    public void ComposeComponents(IContainer container)
+    {
+        container.Column(column =>
+        {
+            // CONTACT
+            ContactColumn(column);
+
+            // EDUCATION
+            EducationColumn(column);
+
+            // EXPERIENCE
+            ExperienceColumn(column);
+
+            // SKILLS
+            SkillsColumn(column);
+
+            // PROJECTS
+            ProjectsColumn(column);
+        });
+    }
+
+    public void ContactColumn(ColumnDescriptor column)
+    {
+        column.Item().Row(row =>
+        {
+            row.RelativeItem().Component(Contact);
+        });
+    }
+
+    public void EducationColumn(ColumnDescriptor column)
+    {
+        column.Item().Row(row =>
+        {
+            row.RelativeItem().Component(Education);
+        });
+    }
+
+    public void ExperienceColumn(ColumnDescriptor column)
+    {
+        column.Item().Row(row =>
+        {
+            row.RelativeItem().Component(Experience);
+        });
+    }
+
+    public void SkillsColumn(ColumnDescriptor column)
+    {
+        column.Item().Row(row =>
+        {
+            row.RelativeItem().Component(Skills);
+        });
+    }
+
+    public void ProjectsColumn(ColumnDescriptor column)
+    {
+        column.Item().Row(row =>
+        {
+            row.RelativeItem().Component(Projects);
+        });
     }
 
     public static ResumeM GenerateExample()
@@ -116,13 +191,13 @@ public class ResumeM : IDocument
             {
                 new Skill
                 {
-                    SkillGroup = "Languages",
-                    SkillSub = "English, French"
+                    MajorSkill = "Languages",
+                    SubSkill = "English, French"
                 },
                 new Skill
                 {
-                    SkillGroup = "Programming Languages",
-                    SkillSub = "C/C++, Python, C#, Java"
+                    MajorSkill = "Programming Languages",
+                    SubSkill = "C/C++, Python, C#, Java"
                 }
             }),
 
@@ -136,22 +211,8 @@ public class ResumeM : IDocument
     };
     }
 
-    public void ComposeResume(IDocumentContainer container)
-    {
-        container
-            .Page(page =>
-            {
-                page.Margin(20);
-                // page.Header().Element(compose_contact);
-                page.Content().Element(ComposeSections);
-                // page.Footer().Element();
-            });
-    }
 
-    public void ComposeSections(IContainer container)
-    {
 
-    }
 
     public void CreateColumnComponent(ColumnDescriptor column, IComponent component)
     {
@@ -161,9 +222,5 @@ public class ResumeM : IDocument
         });
     }
 
-    // read input file and save into objects
-    public void GetData(string path)
-    {
-        
-    }
+
 }

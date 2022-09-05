@@ -44,6 +44,7 @@ public class Component_Contact : IComponent
     public string Phone { get; set; }
     public Dictionary<string, string> Links { get; set; }
 
+    // Constructors
     public Component_Contact()
     {
 
@@ -63,6 +64,7 @@ public class Component_Contact : IComponent
         Links = links;
     }
 
+    // Printed in PDF
     public void Compose(IContainer container)
     {
         
@@ -101,12 +103,21 @@ public class Component_Contact : IComponent
 
 public class Component_Education : IComponent
 {
+    // Data
     public List<School> Education { get; set; }
+
+    // Constructors
+    public Component_Education()
+    {
+
+    }
+
     public Component_Education(List<School> education)
     {
         Education = education;
     }
 
+    // Printed in PDF
     public void Compose(IContainer container)
     {
 
@@ -149,25 +160,21 @@ public class Component_Education : IComponent
 
 public class Component_Experience : IComponent
 {
+    // Data
     public List<Job> Jobs { get; set; }
 
+    // Constructors
     public Component_Experience()
     {
-        Jobs = new List<Job>();
-        Jobs.Add(new Job
-        {
-            Company = "",
-            Role = "",
-            StartDate = "",
-            EndDate = "",
-            Tasks = new List<string>()
-        });
+
     }
 
     public Component_Experience(List<Job> jobs)
     {
         Jobs = jobs;
     }
+
+    // Printed in PDF
     public void Compose(IContainer container)
     {
 
@@ -220,9 +227,16 @@ public class Component_Experience : IComponent
 #region Skills
 public class Component_Skill : IComponent
 {
+    // Data
     public List<Skill> Skills { get; set; }
 
     public Dictionary<String, String> SkillsDict { get; set; }
+
+    // Constructors
+    public Component_Skill()
+    {
+
+    }
     
     public Component_Skill(List<Skill> skills)
     {
@@ -235,6 +249,7 @@ public class Component_Skill : IComponent
         SkillsDict = skills;
     }
 
+    // Printed in PDF
     public void Compose(IContainer container)
     {
 
@@ -259,8 +274,8 @@ public class Component_Skill : IComponent
                 {
                     column.Item().Text(text =>
                     {
-                        text.Span($"{skill.SkillGroup} : ");
-                        text.Span($"{skill.SkillSub}");
+                        text.Span($"{skill.MajorSkill} : ");
+                        text.Span($"{skill.SubSkill}");
                     });
                 }
                 // Horizontal Line
@@ -280,6 +295,11 @@ public class Component_Projects : IComponent
     public Dictionary<string,string> ProjectsDict { get; set; }
     
     // Constructors
+    public Component_Projects()
+    {
+
+    }
+    
     public Component_Projects(List<Project> projects)
     {
         Projects = projects;
@@ -290,7 +310,7 @@ public class Component_Projects : IComponent
         ProjectsDict= projects;
     }
 
-    // Methods
+    // Printed in PDF
     public void Compose(IContainer container)
     {
 
