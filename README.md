@@ -1,24 +1,62 @@
 Repo for creating Resume template using QuestPDF
 
-This apps creates PDF resumes by using a template engine and  allows convenient creation of a single page PDF resume by simply editing text if using a word processor does not give consistent formatting.
+This app allows you to simply edit text if using a word processor does not give consistent formatting to produce a cleanly formatted PDF resume.
 
 Example:
 
-Input: JSON
-``` json
-{"Contact":{"Name":"Steve Jobsfinder","Email":"sjobsfinder@crapple.com","Phone":"123-456-7890","Linkedin":"https://linkedin.com/in/steve-jobsfinder","Github":"https://github.com/sjobsfinder"},
+Input: easily editable text file
+``` toml
+[Contact]
+Name = "Steve Jobsfinder"
+Email = "sjobsfinder@crapple.com"
+Phone = "123-456-7890"
+Links = { Linkedin = "https://linkedin.com/in/steve-jobsfinder", Github = "https://github.com/sjobsfinder" }
 
-"Education":{"Education":[{"Name":"Northsouthern University","Degree":"B.S. Marketing","GraduationDate":"May 1990"},{"Name":"Southnorthern University","Degree":"M.S. Finance","GraduationDate":"May 1992"}]},
+[Education]
+Education = [
+	{ Name = "Northsouthern University", Degree = "B.S. Marketing", GraduationDate = "May 1970" },
+	{ Name = "Southnorthern University", Degree = "MBA", GraduationDate = "May 1972" },
+]
 
-"Experience":{"Experiences":[{"Company":"Crapple","Role":"Founder/CEO","StartDate":"Jan 1976","EndDate":"Sep 1985","Tasks":["task 1","task 2","task 3"]},{"Company":"Flixar","Role":"Founder/CEO","StartDate":"May 1986","EndDate":"May 2006","Tasks":["task 1","task 2","task 3"]}]},"Skills":{"Skills":{"Design":"calligraphy , UX , UI","Management":"yelling, controlling, authoritarian","Communication":"simple, innovative, wow"}},
+[Experience]
+[[Experience.Jobs]]
+Company = "Crapple Inc"
+Role = "Founder/CEO"
+StartDate = "Jan 1976"
+EndDate = "Sep 1985"
+Tasks = [ "Founded an electronics startup in a garage ", "Designed the overpriced electronics for the masses", ]
 
-"Projects":{"Projects":{"Crapple cryPhone":"lead designer on an overpriced touch screen smartphone that will make your wallet bleed and bring you to tears","Crapple cryPad":"lead designer of a tablet that\u0027s actually an overpriced brick"}}}
+[[Experience.Jobs]]
+Company = "Flixar"
+Role = "Owner"
+StartDate = "May 1986"
+EndDate = "May 2006"
+Tasks = [ "made janky 3d animated films using computer graphics after getting kicked out at Crapple", ]
+
+
+[Skills]
+Skills = [
+	{ SkillGroup = "Languages", SkillSub = "English, French" },
+	{ SkillGroup = "Programming Languages", SkillSub = "C/C++, Python, C#, Java" },
+]
+
+[Projects]
+[Projects.ProjectsDict]
+"Crapple cryMac Computer" = "Lead designer of the desktop computer that is so bad it will bring you to tears"
+"Crapple cryPod" = "Designed an overpriced music player that actually doesn't really work that well"
+"Crapple cryPhone" = "Lead designer on an overpriced touch screen smartphone that will make your wallet bleed and bring you to tears"
+"Crapple cryPad" = "Lead designer of a tablet that's actually an overpriced brick"
 ```
 
 Output PDF Resume
 
 ![Resume example](examples/resume.example1.jpg)
+
 [PDF](examples/resume.example1.pdf)
+
+### For developers
+
+If you want to use this simply download the release.
 
 Create new visual studio console project 
 
