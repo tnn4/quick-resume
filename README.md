@@ -1,10 +1,10 @@
 Repo for creating Resume template using QuestPDF
 
-This app allows you to simply edit text if using a word processor does not give consistent formatting to produce a cleanly formatted PDF.
+This app is for anyone who wants to edit a simple text file to produce a cleanly formatted PDF, if using a word processor causes formatting issues.
 
 Are you insane? Why use this when you can just use a word processor?
-Yes I am, and you can use a word processor.
-But all the word processors I've used caused formatting issues that are particular to that program which makes editing painful. Recruiters, and everyone else for that matter want simple and clean documents to process and this resume engine will produce a consistent document everytime.
+
+Probably, and you probably should, but all the word processors I've used caused formatting issues. This resume engine will produce a consistent document everytime.
 
 Example:
 
