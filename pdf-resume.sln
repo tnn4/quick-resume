@@ -5,9 +5,7 @@ VisualStudioVersion = 17.3.32819.101
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "pdf-resume1", "pdf-test1\pdf-resume1.csproj", "{B9FB42A7-5614-40FB-93DE-72023AB3E3C5}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ResumeLibrary", "ResumeLibrary\ResumeLibrary.csproj", "{203E4B81-6130-4764-A463-98EDAA373700}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MauiBlazorApp1", "MauiBlazorApp1\MauiBlazorApp1.csproj", "{673C119A-EC00-4FE7-AFAB-771016A02D25}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Tomlet", "lib\Tomlet-3.1.3\Tomlet\Tomlet.csproj", "{C17A4558-B30C-493F-9612-3A6E70266A09}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -19,16 +17,10 @@ Global
 		{B9FB42A7-5614-40FB-93DE-72023AB3E3C5}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{B9FB42A7-5614-40FB-93DE-72023AB3E3C5}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{B9FB42A7-5614-40FB-93DE-72023AB3E3C5}.Release|Any CPU.Build.0 = Release|Any CPU
-		{203E4B81-6130-4764-A463-98EDAA373700}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{203E4B81-6130-4764-A463-98EDAA373700}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{203E4B81-6130-4764-A463-98EDAA373700}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{203E4B81-6130-4764-A463-98EDAA373700}.Release|Any CPU.Build.0 = Release|Any CPU
-		{673C119A-EC00-4FE7-AFAB-771016A02D25}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{673C119A-EC00-4FE7-AFAB-771016A02D25}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{673C119A-EC00-4FE7-AFAB-771016A02D25}.Debug|Any CPU.Deploy.0 = Debug|Any CPU
-		{673C119A-EC00-4FE7-AFAB-771016A02D25}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{673C119A-EC00-4FE7-AFAB-771016A02D25}.Release|Any CPU.Build.0 = Release|Any CPU
-		{673C119A-EC00-4FE7-AFAB-771016A02D25}.Release|Any CPU.Deploy.0 = Release|Any CPU
+		{C17A4558-B30C-493F-9612-3A6E70266A09}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C17A4558-B30C-493F-9612-3A6E70266A09}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C17A4558-B30C-493F-9612-3A6E70266A09}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C17A4558-B30C-493F-9612-3A6E70266A09}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

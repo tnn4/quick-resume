@@ -3,6 +3,5 @@ bin/
 obj/
 .vs/
 frontend
-MauiBlazorApp1
-Library
+lib
 ignore

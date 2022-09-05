@@ -1,13 +1,18 @@
-﻿using qpdf.Resume;
+﻿
 using QuestPDF.Fluent;
 using QuestPDF.Previewer;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 
-namespace qpdf.Preview;
+namespace qpdf.Resume;
 
-internal class Previewer
+internal class ResumePreviewer
 {
 
-    public void GeneratePreview()
+    public static void GeneratePreview()
     {
         var filePath = "resume.example1.pdf";
         var rDoc = new ResumeExample();
@@ -16,10 +21,10 @@ internal class Previewer
         rDoc.ShowInPreviewer();
     }
 
-    public void GeneratePreviewAndFile(string path)
+    public static void GeneratePreviewAndFile(string path="resume.example1.pdf")
     {
         var filePath = path;
-        var rDoc = new Resumes();
+        var rDoc = new ResumeExample();
         rDoc.GeneratePdf(filePath);
         rDoc.ShowInPreviewer();
     }

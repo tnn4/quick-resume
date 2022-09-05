@@ -19,13 +19,11 @@ github = "https://github.com/jobsfinder"
     # degree
     # graduation date 
 [[education]]
-
-[[education.1]]
 name = "Northsouthern University"
 degree = "B.S. Marketing"
 graduation_date = "May 1970"
 
-[[education.2]]
+[[education]]
 name = "Southnorthern University"
 degree = "MBA"
 graduation_date = "May 1972"
@@ -37,9 +35,9 @@ graduation_date = "May 1972"
     # Start Date
     # End Date
     # Relevant tasks
-[[experience]]
 
-[[experience.1]]
+
+[[experience]]
 company = "Crapple Inc"
 role = "Founder/CEO"
 start_date = "Jan 1976"
@@ -49,39 +47,40 @@ tasks = [
     "Designed the overpriced electronics for the masses"
 ]
 
-[[experience.2]]
+[[experience]]
 company = "Flixar"
 role = "Owner"
 start_date = "May 1986"
 end_date = "Sep 2006"
 tasks = [
     "funded company that made janky 3d animated films using computer graphics after getting kicked out at Crapple", 
-    
+    "made cool movies like Boy Story, Creatures Inc, and Finding Teemo"
 ]
 # Skills and Interests
 # List your skills
     # skillGroup
     # subSkill
+
 [[skills]]
+skillGroup = "Languages"
+subskill = "English, German, French, Spanish, Chinese"
 
-[[skill.1]]
+[[skills]]
 skillGroup = "Design"
-subskill = ""
+subskill = "UX, UI, UCry"
 
-[[skill.2]]
+[[skills]]
 skillGroup = "Management"
-subskill = ""
+subskill = "yelling, micro-managing, budget-cutting"
 
 # Projects
 # List your projects
     # project name
     # description of project
 [[projects]]
+name = "Crapple cryMac Computer"
+description = "Lead designer of the desktop computer that is so bad it will bring you to tears"
 
-[[projects.1]]
-name = ""
-description = ""
-
-[[projects.2]]
-name = ""
-description = ""
+[[projects]]
+name = "Crapple cryPod"
+description = "Designed an overpriced music player that actually doesn't really work that well"

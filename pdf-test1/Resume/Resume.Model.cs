@@ -29,10 +29,10 @@ public class Contact
 {
     public string Name { get; set; }
     public string Email { get; set; }
-
     public string PhoneNumber { get; set; }
-    public Uri Linkedin { get; set; }
-    public Uri Github { get; set; }
+
+    public Dictionary<string, string> Links { get; set; }
+
 }
 
 // EDUCATION
@@ -58,7 +58,20 @@ public class Job
 public class Skill
 {
     public string SkillGroup { get; set; }
-    public string Subskill { get; set; }
+    public string SkillSub{ get; set; }
+    public Dictionary<string, string> _Skills {get; set;}
+
+    public Skill() { }
+
+    public Skill(string skillGroup, string subskill)
+    {
+        SkillGroup = skillGroup;
+        SkillSub = subskill;
+    }
+    public Skill(Dictionary<string, string> skills)
+    {
+        _Skills = skills;
+    }
 }
 
 // PROJECT
@@ -66,4 +79,10 @@ public class Project
 {
     public string Name { get; set; }
     public string Description { get; set; }
+    public Dictionary<string, string> _Projects { get; set; }
+
+    public Project(Dictionary<string,string> projects)
+    {
+        _Projects = projects;
+    }
 }

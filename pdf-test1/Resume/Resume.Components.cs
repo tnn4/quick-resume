@@ -4,7 +4,9 @@ using QuestPDF.Helpers;
 using QuestPDF.Fluent;
 
 namespace qpdf.Resume;
-
+// Components are Models and Templates for the Document
+// Fields and properties of the components act as the Model
+// The Compose method act as the Templating for the data
 #region 
 public class Component_Section : IComponent
 {
@@ -40,8 +42,7 @@ public class Component_Contact : IComponent
     public string Name { get; set; }
     public string Email { get; set; }
     public string Phone { get; set; }
-    public Uri? Linkedin { get; set; }
-    public Uri? Github { get; set; }
+    public Dictionary<string, string> Links { get; set; }
 
     public Component_Contact()
     {
@@ -54,13 +55,12 @@ public class Component_Contact : IComponent
         Phone = phone;
     }
 
-    public Component_Contact(string name, string email, string phone, string linkedin, string github)
+    public Component_Contact(string name, string email, string phone, Dictionary<string,string> links)
     {
         Name = name; 
         Email = email; 
         Phone = phone;
-        Linkedin = new Uri(linkedin);
-        Github = new Uri(github);
+        Links = links;
     }
 
     public void Compose(IContainer container)
@@ -77,12 +77,18 @@ public class Component_Contact : IComponent
                 column.Item().Text($"{Email}");
                 // Phone
                 column.Item().Text($"{Phone}");
+                /*
                 // Linkedin
                 if (Linkedin is not null)
                     column.Item().Text($"{Linkedin}");
                 // Github
                 if (Github is not null)
                     column.Item().Text($"{Github}");
+                */
+                foreach (KeyValuePair<string, string> kvp in Links)
+                {
+                    column.Item().Text($"{kvp.Key}: {kvp.Value} ");
+                }
                 // Horizontal Line
                 column.Item().PaddingVertical(5).LineHorizontal(1).LineColor(Colors.Black);
             });
@@ -143,12 +149,12 @@ public class Component_Education : IComponent
 
 public class Component_Experience : IComponent
 {
-    public List<Job> Experiences { get; set; }
+    public List<Job> Jobs { get; set; }
 
     public Component_Experience()
     {
-        Experiences = new List<Job>();
-        Experiences.Add(new Job
+        Jobs = new List<Job>();
+        Jobs.Add(new Job
         {
             Company = "",
             Role = "",
@@ -158,9 +164,9 @@ public class Component_Experience : IComponent
         });
     }
 
-    public Component_Experience(List<Job> experiences)
+    public Component_Experience(List<Job> jobs)
     {
-        Experiences = experiences;
+        Jobs = jobs;
     }
     public void Compose(IContainer container)
     {
@@ -174,7 +180,7 @@ public class Component_Experience : IComponent
                 column.Item().Text("EXPERIENCE").Style(Style.SectionStyle);
 
 
-                foreach (Job job in Experiences)
+                foreach (Job job in Jobs)
                 {
                     /*
                     //.Text($"{job.Company}" + Constants.LONG_SPACE + job.StartDate.ToString("MMM yyyy") + "-" + job.EndDate.ToString("MMM yyyy"));
@@ -195,6 +201,7 @@ public class Component_Experience : IComponent
                     
                     foreach (string task in job.Tasks)
                     {
+                        // remove ScaleToFit()
                         column.Item().ScaleToFit().Text($"> {task}");
                     }
                 }
@@ -213,11 +220,19 @@ public class Component_Experience : IComponent
 #region Skills
 public class Component_Skill : IComponent
 {
-    public Dictionary<String, String> Skills { get; set; }
+    public List<Skill> Skills { get; set; }
+
+    public Dictionary<String, String> SkillsDict { get; set; }
+    
+    public Component_Skill(List<Skill> skills)
+    {
+        Skills = skills;
+    }
+    
     
     public Component_Skill(Dictionary<String, String> skills)
     {
-        Skills = skills;
+        SkillsDict = skills;
     }
 
     public void Compose(IContainer container)
@@ -229,7 +244,8 @@ public class Component_Skill : IComponent
             row.RelativeItem().Column(column =>
             {
                 column.Item().Text("SKILLS AND INTERESTS").Style(Style.SectionStyle);
-                foreach (KeyValuePair<string,string> kvp in Skills)
+                /*
+                foreach (KeyValuePair<string,string> kvp in SkillsDict)
                 {
                     // column.Item().Text($"{kvp.Key}: {kvp.Value}");
                     column.Item().Text(text =>
@@ -238,7 +254,15 @@ public class Component_Skill : IComponent
                         text.Span($"{kvp.Value}");
                     });
                 }
-
+                */
+                foreach (Skill skill in Skills)
+                {
+                    column.Item().Text(text =>
+                    {
+                        text.Span($"{skill.SkillGroup} : ");
+                        text.Span($"{skill.SkillSub}");
+                    });
+                }
                 // Horizontal Line
                 column.Item().PaddingVertical(5).LineHorizontal(1).LineColor(Colors.Black);
             });
@@ -252,12 +276,18 @@ public class Component_Skill : IComponent
 public class Component_Projects : IComponent
 {
     // Data
-    public Dictionary<string,string> Projects { get; set; }
+    public List<Project> Projects { get; set; }
+    public Dictionary<string,string> ProjectsDict { get; set; }
     
     // Constructors
-    public Component_Projects(Dictionary<String, String> projects)
+    public Component_Projects(List<Project> projects)
     {
         Projects = projects;
+    }
+
+    public Component_Projects(Dictionary<String, String> projects)
+    {
+        ProjectsDict= projects;
     }
 
     // Methods
@@ -269,12 +299,14 @@ public class Component_Projects : IComponent
             row.RelativeItem().Column(column =>
             {
                 column.Item().Text("PROJECTS").Style(Style.SectionStyle);
+                
+                /*
                 foreach (KeyValuePair<string, string> kvp in Projects)
                 {
                     column.Item().Text($"{kvp.Key}").Style(Style.SubsectionStyle);
                     column.Item().Text($"{kvp.Value}");
                 }
-
+                */
                 // Horizontal Line
                 column.Item().PaddingVertical(5).LineHorizontal(1).LineColor(Colors.Black);
             });
