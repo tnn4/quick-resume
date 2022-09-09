@@ -1,15 +1,15 @@
 Repo for creating quick cleanly formatted resumes using a consistent template engine. 
 
-This app is for anyone who wants to edit a simple text file to produce a cleanly formatted PDF, if using a word processor causes formatting issues.
+This app is for anyone who wants to edit a simple TOML text file to produce a cleanly formatted PDF.
 
-Are you insane? Why use this when you can just use a word processor?
+Why use this when you can just use a word processor?
 
-Probably, and you probably should, but all the word processors I've used caused formatting issues. This resume engine will produce a consistent document everytime.
+You probably should, but if the word processors is causing formatting issues you can use this to get quick and consistent results.
 
 Usage:
 
 ```ps
-./quick-resume
+./quick-resume "path/to/input.toml" "path/to/output.pdf"
 ```
 
 Example:
