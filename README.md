@@ -4,7 +4,9 @@ This app is for anyone who wants to edit a simple TOML text file to produce a cl
 
 Why use this when you can just use a word processor?
 
+
 You probably should, but if the word processors are causing formatting issues you can use this to get quick and consistent results.
+
 
 Usage:
 
