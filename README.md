@@ -6,6 +6,12 @@ Are you insane? Why use this when you can just use a word processor?
 
 Probably, and you probably should, but all the word processors I've used caused formatting issues. This resume engine will produce a consistent document everytime.
 
+Usage:
+
+```ps
+./quick-resume
+```
+
 Example:
 
 Input: easily editable text file
@@ -52,7 +58,7 @@ Skills = [
 "Crapple cryPad" = "Lead designer of a tablet that's actually an overpriced brick"
 ```
 
-Output PDF Resume
+Output: Clean PDF Resume
 
 ![Resume example](examples/resume.example1.jpg)
 
@@ -88,5 +94,4 @@ At root directory:
 
 
 ### TODO
-- output JSON
-- read JSON
+- update UI

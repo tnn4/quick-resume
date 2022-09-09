@@ -19,6 +19,19 @@ internal class FileHelper
         File.WriteAllText("TestFolder/TestFiles.txt", "hello");
     }
 
+    public static bool ValidPath(string path)
+    {
+        if (!File.Exists(path))
+        {
+            Console.WriteLine("Invalid file. Please check that the file exists or that the path is typed correctly");
+            return false;
+        }
+        else
+        {
+            return true;
+        }
+    }
+
     private bool IsValidPath(string path, bool allowRelativePaths = false)
     {
         bool isValid = true;

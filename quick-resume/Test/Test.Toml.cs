@@ -64,13 +64,14 @@ list = [4, 5, 6]";
         Console.WriteLine("TOML OBJECT: ");
         Console.WriteLine(tomlString);
 
-        TestJson.SerializeToFile(rM, "examples/rM.json");
+        TestJson.SerializeToFile(rM, pathOut);
 
         if (rM is not null)       
             rM.GeneratePdf(pathOut); //null reference exception
+#if DEBUG
         rM.ShowInPreviewer();
-        
-        
+#endif        
+
     }
 
     public static void CreateSectionExample()

@@ -30,7 +30,13 @@ public class EntryPoint
 
         //TomlTest.TomletGeneratePdfFromToml("examples/input.ResumeM.toml", "examples/output.ResumeM.pdf");
         //TomlTest.TomletGeneratePdfFromToml("examples/input.tngo.toml", "examples/output.tngo.pdf");
-        InputHelper.printWarn();
+        
+        InputHelper.ArgsValid(args);
+
+        if (FileHelper.ValidPath(args[0]))
+        {
+            TomlTest.TomletGeneratePdfFromToml(args[0], args[1]);
+        }
         Console.WriteLine("Press key to exit...");
         Console.ReadLine();
     }
