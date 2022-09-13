@@ -5,7 +5,7 @@ This app is for anyone who wants to edit a simple TOML text file to produce a cl
 Why use this when you can just use a word processor?
 
 
-You probably should, but if the word processors are causing formatting issues or if you want to install anything and just want a no bullshit resume that will make applicant tracking systems happy this is for you.
+You probably should, but if you need something quick and the word processors are causing formatting issues or if you don't want to install anything and just want a no bullshit resume that will make applicant tracking systems happy then this is for you.
 
 
 Usage:
